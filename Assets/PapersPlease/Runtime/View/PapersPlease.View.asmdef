@@ -1,7 +1,7 @@
 {
     "name": "PapersPlease.View",
     "rootNamespace": "",
-    "references": ["PapersPlease.Model", "PapersPlease.Controller"],
+    "references": ["PapersPlease.Model", "PapersPlease.Controller", "Unity.TextMeshPro", "Zenject"],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": true,
