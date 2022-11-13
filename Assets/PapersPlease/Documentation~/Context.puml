@@ -1,0 +1,22 @@
+﻿@startuml
+skin rose
+
+[*] --> StartDay
+
+StartDay --> CheckRules
+CheckRules --> CallForNextImmigrant : player calls next
+CallForNextImmigrant --> InspectPassport
+CallForNextImmigrant --> StartWorkDay : {fist immigrant}
+StartWorkDay --> InspectPassport
+InspectPassport --> AcceptPassport
+InspectPassport --> RejectPassport
+AcceptPassport --> EndWorkday : {time over}
+RejectPassport --> EndWorkday : {time over}
+AcceptPassport --> CallForNextImmigrant : player calls next
+RejectPassport --> CallForNextImmigrant : player calls next
+EndWorkday --> ManageDailySalary
+ManageDailySalary --> EndDay
+EndDay --> StartDay
+
+
+@enduml

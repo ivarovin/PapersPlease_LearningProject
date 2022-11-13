@@ -18,8 +18,6 @@ package Gameplay{
     usecase CheckDailyRules
     usecase ManageDailySalary
 
-'    gestionar recursos
-
     AcceptPassport -u-|> TakeDecision
     RejectPassport -u-|> TakeDecision
     
