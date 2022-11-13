@@ -1,5 +1,26 @@
 {
   "dependencies": {
+    "com.boundfoxstudios.fluentassertions": {
+      "version": "https://github.com/BoundfoxStudios/fluentassertions-unity.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "73575516048ef17c212d93e03517740d429183e8"
+    },
+    "com.rgv.designbycontract": {
+      "version": "https://github.com/RicardoGuzmanVelasco/RGV.git?path=/Assets/RGV.DesignByContract",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "f71c6732ad51d94481cad78d949c58f383c621ae"
+    },
+    "com.svermeulen.extenject": {
+      "version": "9.1.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
     "com.unity.2d.animation": {
       "version": "9.0.0-pre.3",
       "depth": 1,
@@ -231,6 +252,13 @@
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "dev.upm-packages.nsubstitute": {
+      "version": "https://github.com/upm-packages/NSubstitute.git?path=/Assets",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "1a35500008c01967ae37a9754ac5244d86001504"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
