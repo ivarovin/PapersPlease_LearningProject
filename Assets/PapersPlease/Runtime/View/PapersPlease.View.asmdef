@@ -1,0 +1,14 @@
+{
+    "name": "PapersPlease.View",
+    "rootNamespace": "",
+    "references": ["PapersPlease.Model", "PapersPlease.Controller"],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

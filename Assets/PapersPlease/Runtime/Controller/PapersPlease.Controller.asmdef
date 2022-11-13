@@ -1,0 +1,16 @@
+{
+    "name": "PapersPlease.Controller",
+    "rootNamespace": "",
+    "references": [
+        "GUID:fec1377f6edb4e74ae8a9436db3eaf95"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": true
+}
