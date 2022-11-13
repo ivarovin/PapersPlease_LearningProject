@@ -9,7 +9,8 @@ package Gameplay{
     usecase CallForNextImmigrant
     usecase AcceptPassport
     usecase RejectPassport
-    usecase InspectPassport <<abstract>> 
+    usecase InspectPassport
+    usecase TakeDecision  <<abstract>> 
     usecase EndDay
     usecase StartDay
     usecase CheckDailyRules
@@ -17,12 +18,13 @@ package Gameplay{
 
 '    gestionar recursos
 
-    AcceptPassport -u-|> InspectPassport
-    RejectPassport -u-|> InspectPassport
+    AcceptPassport -u-|> TakeDecision
+    RejectPassport -u-|> TakeDecision
 }
 
 Player ..> CallForNextImmigrant
 Player ..> InspectPassport
+Player ..> TakeDecision
 Player ..> ManageDailySalary
 Player ..> CheckDailyRules
 
