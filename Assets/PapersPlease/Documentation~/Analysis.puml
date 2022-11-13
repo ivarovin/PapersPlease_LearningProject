@@ -1,0 +1,65 @@
+﻿@startuml
+skin rose
+
+entity Passport
+entity Immigrant
+entity Day
+entity Penalty
+entity Salary
+entity DailyReport
+entity Violation
+entity Rule
+
+entity TimePassage
+
+control CallForNextImmigrant
+control InspectPassport
+control CheckRules
+control ManageSalary
+
+control StartDay
+control EndDay
+
+boundary "Passport" as PassportView
+boundary "Immigrant" as ImmigrantView
+boundary "Penalty" as PenaltyView
+boundary "Salary" as SalaryView
+boundary "DailyReport" as DailyReportView
+boundary DailyRules
+
+CallForNextImmigrant ..> Immigrant
+Immigrant *-- "0..*" Passport
+
+DailyReport *-- Salary
+
+InspectPassport ..> Passport
+InspectPassport ..> Immigrant
+
+StartDay -- Day
+EndDay -- Day
+StartDay -- TimePassage
+EndDay -- TimePassage
+
+ManageSalary ..> DailyReport
+InspectPassport ..> Violation
+
+Violation --> "0..1" Penalty
+
+CheckRules ..> Rule
+
+StartDay --> CheckRules
+
+Violation -- Rule
+
+EndDay --> ManageSalary
+
+PassportView .u.> Passport
+ImmigrantView .u.> Immigrant
+PenaltyView .u.> Penalty
+SalaryView .u.> Salary
+DailyReportView .u.> DailyReport
+DailyRules .u.> Rule
+
+DailyReportView *-- SalaryView
+
+@enduml

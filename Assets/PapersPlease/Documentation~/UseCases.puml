@@ -6,7 +6,7 @@ actor Player
 actor Time
 
 package Gameplay{
-    usecase CallForNext
+    usecase CallForNextImmigrant
     usecase AcceptPassport
     usecase RejectPassport
     usecase InspectPassport <<abstract>> 
@@ -21,7 +21,7 @@ package Gameplay{
     RejectPassport -u-|> InspectPassport
 }
 
-Player ..> CallForNext
+Player ..> CallForNextImmigrant
 Player ..> InspectPassport
 Player ..> ManageDailySalary
 Player ..> CheckDailyRules
