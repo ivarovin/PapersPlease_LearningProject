@@ -13,6 +13,8 @@ package Gameplay{
     usecase TakeDecision  <<abstract>> 
     usecase EndDay
     usecase StartDay
+    usecase StartWorkday
+    usecase EndWorkday
     usecase CheckDailyRules
     usecase ManageDailySalary
 
@@ -20,6 +22,12 @@ package Gameplay{
 
     AcceptPassport -u-|> TakeDecision
     RejectPassport -u-|> TakeDecision
+    
+    actor System <<this is not ok :(>>
+    
+    System .u.> StartWorkday
+    System .u.> EndDay
+    System .u.> StartDay
 }
 
 Player ..> CallForNextImmigrant
@@ -28,8 +36,7 @@ Player ..> TakeDecision
 Player ..> ManageDailySalary
 Player ..> CheckDailyRules
 
-Time ..> EndDay
-Time ..> StartDay
+Time ..> EndWorkday
 
 
 @enduml
