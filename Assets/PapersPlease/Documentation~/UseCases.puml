@@ -1,0 +1,33 @@
+﻿@startuml
+skin rose
+left to right direction
+
+actor Player
+actor Time
+
+package Gameplay{
+    usecase CallForNext
+    usecase AcceptPassport
+    usecase RejectPassport
+    usecase InspectPassport <<abstract>> 
+    usecase EndDay
+    usecase StartDay
+    usecase CheckDailyRules
+    usecase ManageDailySalary
+
+'    gestionar recursos
+
+    AcceptPassport -u-|> InspectPassport
+    RejectPassport -u-|> InspectPassport
+}
+
+Player ..> CallForNext
+Player ..> InspectPassport
+Player ..> ManageDailySalary
+Player ..> CheckDailyRules
+
+Time ..> EndDay
+Time ..> StartDay
+
+
+@enduml
