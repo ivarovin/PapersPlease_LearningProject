@@ -8,12 +8,17 @@ namespace PapersPlease.Runtime.View
 {
     public class LabelDayView : MonoBehaviour, DayView
     {
-        public async Task Print(DateTime dateTime)
+        public async Task PrintAtStart(DateTime dateTime)
         {
             await Task.Yield();
             PrintDate(dateTime);
         }
-        
+
+        public async Task PrintAtEnd(DateTime dateTime)
+        {
+            GetComponent<TextMeshProUGUI>().text = $"Day {dateTime:dd/MM/yyyy} ended";
+        }
+
         private void PrintDate(DateTime dateTime)
         {
             GetComponent<TextMeshProUGUI>().text = $"Day {dateTime:dd/MM/yyyy} started";

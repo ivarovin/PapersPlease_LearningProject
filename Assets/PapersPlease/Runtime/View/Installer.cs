@@ -9,6 +9,7 @@ namespace PapersPlease.Runtime.View
         public override void InstallBindings()
         {
             Container.Bind<StartDay>().AsSingle();
+            Container.Bind<EndDay>().AsSingle();
             Container.BindInterfacesTo<LabelDayView>().FromComponentInHierarchy().AsSingle();
         }
     }

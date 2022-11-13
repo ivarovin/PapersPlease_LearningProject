@@ -5,6 +5,7 @@ namespace PapersPlease.Runtime.Controller
 {
     public interface DayView
     {
-        Task Print(DateTime dateTime);
+        Task PrintAtStart(DateTime dateTime);
+        Task PrintAtEnd(DateTime dateTime);
     }
 }
