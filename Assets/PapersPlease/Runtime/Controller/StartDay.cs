@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace PapersPlease.Runtime.Controller
 {
@@ -11,9 +12,9 @@ namespace PapersPlease.Runtime.Controller
             this.view = view;
         }
 
-        public void Execute()
+        public Task ExecuteAsync()
         {
-            view.PrintDate(new DateTime(1982, 11, 23));
+            return view.Print(new DateTime(1982, 11, 23));
         }
     }
 }

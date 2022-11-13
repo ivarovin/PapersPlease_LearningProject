@@ -24,13 +24,11 @@ namespace PapersPlease.Tests.Runtime
         [UnityTest]
         public IEnumerator StartDay()
         {
-            var findObjectOfType = FindObjectOfType<LabelDayView>();
-            var dayLabel = findObjectOfType.GetComponent<TextMeshProUGUI>();
-            
             FindObjectOfType<StartDayInput>().GetComponent<Button>().onClick.Invoke();
 
             yield return null;
             
+            var dayLabel = FindObjectOfType<LabelDayView>().GetComponent<TextMeshProUGUI>();
             dayLabel.text.Should().Be($"Day {23.November(1982):dd/MM/yyyy} started");
         }
     }

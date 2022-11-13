@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace PapersPlease.Runtime.Controller
 {
     public interface DayView
     {
-        void PrintDate(DateTime dateTime);
+        Task Print(DateTime dateTime);
     }
 }
