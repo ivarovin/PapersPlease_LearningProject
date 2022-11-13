@@ -10,18 +10,21 @@ namespace PapersPlease.Runtime.View
     {
         public async Task PrintAtStart(DateTime dateTime)
         {
-            await Task.Yield();
-            PrintDate(dateTime);
+            PrintHeader("started");
+            await Task.Delay(458);
+            GetComponent<TextMeshProUGUI>().text += $"{dateTime:dd/MM/yyyy}";
         }
 
         public async Task PrintAtEnd(DateTime dateTime)
         {
-            GetComponent<TextMeshProUGUI>().text = $"Day {dateTime:dd/MM/yyyy} ended";
+            PrintHeader("ended");
+            await Task.Delay(257);
+            GetComponent<TextMeshProUGUI>().text += $"{dateTime:dd/MM/yyyy}";
         }
-
-        private void PrintDate(DateTime dateTime)
+        
+        void PrintHeader(string header)
         {
-            GetComponent<TextMeshProUGUI>().text = $"Day {dateTime:dd/MM/yyyy} started";
+            GetComponent<TextMeshProUGUI>().text = $"Day {header}: ";
         }
     }
 }

@@ -15,6 +15,8 @@ namespace PapersPlease.Tests.Runtime
 {
     public class WalkingSkeletonTests
     {
+        const float aWhile = 0.5f;
+        
         [UnitySetUp]
         public IEnumerator Setup()
         {
@@ -26,23 +28,23 @@ namespace PapersPlease.Tests.Runtime
         {
             FindObjectOfType<StartDayInput>().GetComponent<Button>().onClick.Invoke();
 
-            yield return null;
+            yield return new WaitForSeconds(aWhile);
             
             var dayLabel = FindObjectOfType<LabelDayView>().GetComponent<TextMeshProUGUI>();
-            dayLabel.text.Should().Be($"Day {23.November(1982):dd/MM/yyyy} started");
+            dayLabel.text.Should().Be($"Day started: {23.November(1982):dd/MM/yyyy}");
         }
         
         [UnityTest]
         public IEnumerator EndDay()
         {
             FindObjectOfType<StartDayInput>().GetComponent<Button>().onClick.Invoke();
-            yield return null;
+            yield return new WaitForSeconds(aWhile);
             
             FindObjectOfType<EndDayInput>().GetComponent<Button>().onClick.Invoke();
-            yield return null;
-            
+            yield return new WaitForSeconds(aWhile);
+
             var dayLabel = FindObjectOfType<LabelDayView>().GetComponent<TextMeshProUGUI>();
-            dayLabel.text.Should().Be($"Day {23.November(1982):dd/MM/yyyy} ended");
+            dayLabel.text.Should().Be($"Day ended: {23.November(1982):dd/MM/yyyy}");
         }
     }
 }
