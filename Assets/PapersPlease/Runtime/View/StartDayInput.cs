@@ -13,7 +13,7 @@ namespace PapersPlease.Runtime.View
 
         void Start()
         {
-            GetComponent<Button>().onClick.AddListener(async () => await controller.ExecuteAsync());
+            GetComponent<Button>().onClick.AddListener(async () => await controller.Execute());
         }
     }
 }

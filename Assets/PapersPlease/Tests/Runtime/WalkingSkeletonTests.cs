@@ -1,50 +1,65 @@
 ﻿using System;
 using System.Collections;
+using System.Threading.Tasks;
 using FluentAssertions;
 using FluentAssertions.Extensions;
 using NUnit.Framework;
 using PapersPlease.Runtime.View;
+using RGV.TestApi.Runtime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 using UnityEngine.UI;
+using static RGV.TestApi.Runtime.TestApi.Fake;
+using static RGV.TestApi.Runtime.TestApi.Find;
 using static UnityEngine.Object;
 
 namespace PapersPlease.Tests.Runtime
 {
     public class WalkingSkeletonTests
     {
-        const float aWhile = 0.5f;
-        
         [UnitySetUp]
         public IEnumerator Setup()
         {
             yield return SceneManager.LoadSceneAsync("WalkingSkeleton");
         }
-        
-        [UnityTest]
-        public IEnumerator StartDay()
-        {
-            FindObjectOfType<StartDayInput>().GetComponent<Button>().onClick.Invoke();
 
-            yield return new WaitForSeconds(aWhile);
+        [Test]
+        public async Task StartDayAsync()
+        {
+            ClickOn<StartDayInput>();
+
+            await Task.Delay(1.Seconds());
             
-            var dayLabel = FindObjectOfType<LabelDayView>().GetComponent<TextMeshProUGUI>();
-            dayLabel.text.Should().Be($"Day started: {23.November(1982):dd/MM/yyyy}");
+            TextOnLabelOf<LabelDayView>().Should().Be($"Day started: {23.November(1982):dd/MM/yyyy}");
         }
         
-        [UnityTest]
-        public IEnumerator EndDay()
+        [Test]
+        public async Task EndDayAsync()
         {
-            FindObjectOfType<StartDayInput>().GetComponent<Button>().onClick.Invoke();
-            yield return new WaitForSeconds(aWhile);
+            ClickOn<StartDayInput>();
+            await Task.Delay(1.Seconds());
             
-            FindObjectOfType<EndDayInput>().GetComponent<Button>().onClick.Invoke();
-            yield return new WaitForSeconds(aWhile);
+            ClickOn<EndDayInput>();
+            await Task.Delay(1.Seconds());
 
-            var dayLabel = FindObjectOfType<LabelDayView>().GetComponent<TextMeshProUGUI>();
-            dayLabel.text.Should().Be($"Day ended: {23.November(1982):dd/MM/yyyy}");
+            TextOnLabelOf<LabelDayView>().Should().Be($"Day ended: {23.November(1982):dd/MM/yyyy}");
+        }
+        
+        [Test]
+        public async Task EndDay_ThenStartDay_PassesToNextDay()
+        {
+            ClickOn<StartDayInput>();
+            await Task.Delay(1.Seconds());
+            
+            ClickOn<EndDayInput>();
+            await Task.Delay(1.Seconds());
+            
+            ClickOn<StartDayInput>();
+            await Task.Delay(1.Seconds());
+
+            TextOnLabelOf<LabelDayView>().Should().Be($"Day started: {24.November(1982):dd/MM/yyyy}");
         }
     }
 }

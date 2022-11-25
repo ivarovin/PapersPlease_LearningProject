@@ -5,16 +5,19 @@ namespace PapersPlease.Runtime.Controller
 {
     public class StartDay
     {
-        readonly DayView view;
+        readonly DayView view; 
+        DateTime date;
         
         public StartDay(DayView view)
         {
             this.view = view;
+            this.date = new DateTime(1982, 11, 23) - TimeSpan.FromDays(1);
         }
 
-        public Task ExecuteAsync()
+        public Task Execute()
         {
-            return view.PrintAtStart(new DateTime(1982, 11, 23));
+            date = date.AddDays(1);
+            return view.PrintAtStart(date);
         }
     }
 }
