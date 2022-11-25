@@ -1,24 +1,23 @@
 ﻿using System;
 using System.Threading.Tasks;
 using PapersPlease.Runtime.Model;
+using Unity.Plastic.Newtonsoft.Json;
 
 namespace PapersPlease.Runtime.Controller
 {
     public class EndDay
     {
         readonly DayView view;
-        readonly Workday model;
 
-        public EndDay(Workday model, DayView view)
+        public EndDay(DayView view)
         {
-            this.model = model;
-            this.view = view;
+           this.view = view;
         }
 
-        public Task ExecuteAsync()
+        public Task Execute(Workday day)
         {
-            var task = view.PrintAtEnd(model);
-            model.SpendDay();
+            var task = view.PrintAtEnd(day);
+            day.SpendDay();
             return task;
         }
     }

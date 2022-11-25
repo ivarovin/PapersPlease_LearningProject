@@ -6,6 +6,7 @@ namespace PapersPlease.Runtime.Model
     {
         DateTime when;
         public TimeSpan TimeOfDay => when.TimeOfDay;
+        public bool IsOver => when.TimeOfDay > TimeSpan.FromHours(18);
 
         bool isPassing;
 
@@ -20,6 +21,7 @@ namespace PapersPlease.Runtime.Model
         public void SpendDay()
         {
             when = when.Date.AddDays(1).AddHours(6);
+            isPassing = false;
         }
 
         public void Forward(TimeSpan howMuch)
