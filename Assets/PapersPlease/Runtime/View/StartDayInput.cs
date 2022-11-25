@@ -1,5 +1,4 @@
-﻿using System;
-using PapersPlease.Runtime.Controller;
+﻿using PapersPlease.Runtime.Controller;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;

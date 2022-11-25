@@ -15,6 +15,7 @@ package Gameplay{
     usecase StartDay
     usecase StartWorkday
     usecase EndWorkday
+    usecase PassTime
     usecase CheckDailyRules
     usecase ManageDailySalary
 
@@ -35,6 +36,7 @@ Player ..> ManageDailySalary
 Player ..> CheckDailyRules
 
 Time ..> EndWorkday
+Time ..> PassTime
 
 
 @enduml
