@@ -1,24 +1,15 @@
-﻿using System.Collections;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using FluentAssertions;
 using NUnit.Framework;
 using PapersPlease.Runtime.View;
-using UnityEngine.SceneManagement;
-using UnityEngine.TestTools;
 using static PapersPlease.Tests.Runtime.Wait;
 using static RGV.TestApi.Runtime.TestApi.Fake;
 using static RGV.TestApi.Runtime.TestApi.Find;
 
 namespace PapersPlease.Tests.Runtime
 {
-    public class WorkingDayTests
+    public class WorkingDayTests : WalkingSkeletonFixture
     {
-        [UnitySetUp]
-        public IEnumerator Setup()
-        {
-            yield return SceneManager.LoadSceneAsync("WalkingSkeleton");
-        }
-
         [Test]
         public async Task WorkingDayStartsWithFirstImmigrant()
         {
