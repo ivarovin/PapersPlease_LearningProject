@@ -17,16 +17,7 @@ namespace PapersPlease.Runtime.View
         {
             Container.BindInterfacesAndSelfTo<Workday>().FromInstance(Workday.FirstOne()).AsSingle();
         }
-
-        void InstallViews()
-        {
-            Container.BindInterfacesTo<CanvasNewspaper>().FromComponentInHierarchy().AsSingle();
-            Container.BindInterfacesTo<DigitalClock>().FromComponentInHierarchy().AsSingle();
-            Container.BindInterfacesTo<WalkToWorkButton>().FromComponentsInHierarchy().AsSingle();
-            Container.BindInterfacesTo<Typewriter>().FromComponentsInHierarchy().AsSingle();
-            Container.BindInterfacesTo<SpeakerButton>().FromComponentsInHierarchy().AsSingle();
-        }
-
+        
         void InstallControllers()
         {
             Container.Bind<StartDay>().AsSingle();
@@ -35,6 +26,15 @@ namespace PapersPlease.Runtime.View
             Container.Bind<TimePassage>().AsSingle();
             Container.Bind<ShowNewspaper>().AsSingle();
             Container.Bind<Gameplay>().AsSingle();
+        }
+
+        void InstallViews()
+        {
+            Container.BindInterfacesTo<CanvasNewspaper>().FromComponentInHierarchy().AsSingle();
+            Container.BindInterfacesTo<DigitalClock>().FromComponentInHierarchy().AsSingle();
+            Container.BindInterfacesTo<WalkToWorkButton>().FromComponentsInHierarchy().AsSingle();
+            Container.BindInterfacesTo<Typewriter>().FromComponentsInHierarchy().AsSingle();
+            Container.BindInterfacesTo<SpeakerButton>().FromComponentsInHierarchy().AsSingle();
         }
     }
 }
