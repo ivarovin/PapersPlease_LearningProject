@@ -19,13 +19,8 @@ namespace PapersPlease.Runtime.Controller
         /// Ahora como mucho te pasa el mismo día de una vez, nunca más de uno.
         public void Inject(TimeSpan time)
         {
-            if(time > day.TimeToOver)
-            {
-                promise?.SetResult(true);
-                return;
-            }
+            day.Forward(time < day.TimeToOver ? time : day.TimeToOver);
 
-            day.Forward(time);
             view.Print(day.TimeOfDay);
 
             if(day.IsOver)
