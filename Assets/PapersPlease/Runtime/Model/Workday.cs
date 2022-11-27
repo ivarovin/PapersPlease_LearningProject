@@ -19,6 +19,12 @@ namespace PapersPlease.Runtime.Model
         {
             date = day + schedule.Start;
         }
+        
+        public Workday(DateTime day, Worktime schedule)
+        {
+            this.schedule = schedule;
+            date = day + schedule.Start;
+        }
 
         public static Workday FirstOne { get; } = new(new DateTime(1982, 11, 23));
 

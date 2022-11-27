@@ -4,8 +4,8 @@ namespace PapersPlease.Runtime.Model
 {
     public readonly struct Worktime
     {
-        public TimeSpan Start { get; private init; }
-        public TimeSpan End { get; private init; }
+        public TimeSpan Start { get; init; }
+        public TimeSpan End { get; init; }
         public TimeSpan Duration => End - Start;
         
         public static Worktime Default { get; } =  new()
