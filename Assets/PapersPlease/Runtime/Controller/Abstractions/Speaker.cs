@@ -5,5 +5,6 @@ namespace PapersPlease.Runtime.Controller
     public interface Speaker
     {
         Task Listen();
+        Task ShowCall();
     }
 }

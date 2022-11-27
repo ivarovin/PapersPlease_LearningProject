@@ -15,7 +15,7 @@ namespace PapersPlease.Runtime.View
         {
             GetComponent<Button>().onClick.AddListener(() =>
             {
-                timeController.InjectTime(TimeSpan.FromHours(1));
+                timeController.Inject(TimeSpan.FromHours(1));
             });
         }
     }

@@ -5,28 +5,29 @@ namespace PapersPlease.Runtime.Model
     public class Workday
     {
         readonly Worktime schedule = Worktime.Default;
-        DateTime now;
-        
-        public TimeSpan TimeOfDay => now.TimeOfDay;
-        public bool IsOver => TimeToOver < TimeSpan.Zero;
-        public TimeSpan TimeToOver => schedule.End - now.TimeOfDay;
-        public int DaysSinceBeginning => (int)now.Subtract(FirstOne().now).TotalDays; 
-
+        DateTime date;
         bool isPassing;
 
+        public TimeSpan TimeOfDay => date.TimeOfDay;
+        
+        public bool IsOver => TimeToOver <= TimeSpan.FromSeconds(1);
+        public TimeSpan TimeToOver => schedule.End - date.TimeOfDay;
+        
+        public int DaysSinceBeginning => (int)date.Subtract(FirstOne.date).TotalDays + 1; 
+        
         public Workday(DateTime day)
         {
-            now = day + schedule.Start;
+            date = day + schedule.Start;
         }
 
-        public static Workday FirstOne()
-        {
-            return new Workday(new DateTime(1982, 11, 23));
-        }
+        public static Workday FirstOne { get; } = new(new DateTime(1982, 11, 23));
+
+        public void Start() => isPassing = true;
+
         
         public void SpendDay()
         {
-            now = now.Date.AddDays(1) + schedule.Start;
+            date = date.Date.AddDays(1) + schedule.Start;
             isPassing = false;
         }
 
@@ -35,14 +36,12 @@ namespace PapersPlease.Runtime.Model
             if(!isPassing)
                 return;
             
-            now = now.Add(howMuch);
+            date = date.Add(howMuch);
         }
-        
-        public void Start() => isPassing = true;
         
         public static implicit operator DateTime(Workday workday)
         {
-            return workday.now;
+            return workday.date;
         }
     }
 }

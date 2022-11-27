@@ -8,10 +8,10 @@ namespace PapersPlease.Runtime.Model
         public TimeSpan End { get; private init; }
         public TimeSpan Duration => End - Start;
         
-        public static Worktime Default { get; } =  new Worktime
+        public static Worktime Default { get; } =  new()
         {
             Start = TimeSpan.FromHours(6),
-            End = TimeSpan.FromHours(6) + TimeSpan.FromSeconds(15)
+            End = TimeSpan.FromHours(6) + TimeSpan.FromHours(12)
         };
     }
 }

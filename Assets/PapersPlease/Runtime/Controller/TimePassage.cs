@@ -17,7 +17,7 @@ namespace PapersPlease.Runtime.Controller
         }
 
         /// Ahora como mucho te pasa el mismo día de una vez, nunca más de uno.
-        public void InjectTime(TimeSpan time)
+        public void Inject(TimeSpan time)
         {
             if(time > day.TimeToOver)
             {

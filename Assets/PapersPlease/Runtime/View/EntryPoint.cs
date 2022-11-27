@@ -17,7 +17,7 @@ namespace PapersPlease.Runtime.View
         
         void Update()
         {
-            time.InjectTime(TimeSpan.FromSeconds(Time.deltaTime));
+            time.Inject(TimeSpan.FromSeconds(Time.deltaTime));
             
             if(Input.GetKeyDown(KeyCode.Space))
                 EndDayAtOnce();
@@ -26,7 +26,7 @@ namespace PapersPlease.Runtime.View
         /// QA. Refactor. 
         public void EndDayAtOnce()
         {
-            time.InjectTime(TimeSpan.FromHours(23));
+            time.Inject(TimeSpan.FromHours(23));
         }
     }
 }

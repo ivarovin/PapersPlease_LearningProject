@@ -27,13 +27,10 @@ namespace PapersPlease.Runtime.Controller
             {
                 await showNewspaper.Run();
                 await startDay.Run();
-                
-                while(!workdayModel.IsOver)
-                {
-                    await callNext.Run();
-                    // await inspectPassport.Run();
-                }
-                    
+
+                do { await callNext.Run(); }
+                while(!workdayModel.IsOver);
+
                 await endDay.Run();
             }
         }

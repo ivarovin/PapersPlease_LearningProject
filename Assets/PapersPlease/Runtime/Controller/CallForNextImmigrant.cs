@@ -19,6 +19,7 @@ namespace PapersPlease.Runtime.Controller
         public async Task Run()
         {
             await speaker.Listen();
+            await speaker.ShowCall();
             
             if(!IsFirstImmigrantToday)
                 return;
