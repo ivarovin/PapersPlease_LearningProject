@@ -1,8 +1,11 @@
 using System;
 using System.Threading.Tasks;
+using DG.Tweening;
 using PapersPlease.Runtime.Controller;
 using TMPro;
 using UnityEngine;
+using static DG.Tweening.Ease;
+
 
 namespace PapersPlease.Runtime.View
 {
@@ -14,7 +17,7 @@ namespace PapersPlease.Runtime.View
         {
             gameObject.SetActive(true);
             date.text = $"{dateTime:dd/MM/yyyy}";
-            await Task.Delay(1000);
+            await transform.DOScale(0, .5f).From().SetEase(OutElastic).AsyncWaitForCompletion();
         }
 
         public Task PrintAtEnd(DateTime dateTime)
