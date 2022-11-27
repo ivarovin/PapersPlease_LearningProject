@@ -19,7 +19,7 @@ namespace PapersPlease.Tests.Runtime
 
             await aSecond;
 
-            TextOnLabelOf<LabelDayView>().Should().Be($"Day started: {23.November(1982):dd/MM/yyyy}");
+            TextOnChildLabelOf<Newspaper>().Should().Be($"{23.November(1982):dd/MM/yyyy}");
         }
 
         [Test]
@@ -48,7 +48,7 @@ namespace PapersPlease.Tests.Runtime
             ClickOn<WalkToWork>();
             await aSecondOdd;
 
-            TextOnLabelOf<LabelDayView>().Should().Be($"Day started: {24.November(1982):dd/MM/yyyy}");
+            TextOnChildLabelOf<Newspaper>().Should().Be($"{24.November(1982):dd/MM/yyyy}");
         }
     }
 }

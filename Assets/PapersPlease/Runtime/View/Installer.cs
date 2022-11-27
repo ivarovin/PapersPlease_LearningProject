@@ -20,7 +20,7 @@ namespace PapersPlease.Runtime.View
 
         void InstallViews()
         {
-            Container.BindInterfacesTo<LabelDayView>().FromComponentInHierarchy().AsSingle();
+            Container.BindInterfacesTo<Newspaper>().FromComponentInHierarchy().AsSingle().NonLazy();
             Container.BindInterfacesTo<DigitalClock>().FromComponentInHierarchy().AsSingle();
         }
 
@@ -30,6 +30,8 @@ namespace PapersPlease.Runtime.View
             Container.Bind<EndDay>().AsSingle();
             Container.Bind<CallForNextImmigrant>().AsSingle();
             Container.Bind<TimePassage>().AsSingle();
+            Container.Bind<ShowNewspaper>().AsSingle();
+            Container.Bind<Gameplay>().AsSingle();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using FluentAssertions.Extensions;
 using TMPro;
@@ -12,6 +13,11 @@ namespace PapersPlease.Tests.Runtime
         public static Task aSecondOdd => Task.Delay(1100.Milliseconds());
         public static YieldAwaitable aFrame => Task.Yield();
 
+        public static string TextOnChildLabelOf<T>() where T : MonoBehaviour
+        {
+            return Object.FindObjectOfType<T>().GetComponentsInChildren<TMP_Text>().Single().text;
+        }
+        
         public static async Task ToChange(this TextMeshProUGUI label)
         {
             var tcs = new TaskCompletionSource<bool>();

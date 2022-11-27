@@ -8,7 +8,13 @@ namespace PapersPlease.Runtime.View
     public class EntryPoint : MonoBehaviour
     {
         [Inject] TimePassage time;
+        [Inject] Gameplay gameplay;
 
+        async void Start()
+        {
+            await gameplay.Run();
+        }
+        
         void Update()
         {
             time.InjectTime(TimeSpan.FromSeconds(Time.deltaTime));
