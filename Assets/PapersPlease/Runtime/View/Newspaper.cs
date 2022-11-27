@@ -17,7 +17,9 @@ namespace PapersPlease.Runtime.View
         {
             gameObject.SetActive(true);
             date.text = $"{dateTime:dd/MM/yyyy}";
-            await transform.DOScale(0, .5f).From().SetEase(OutElastic).AsyncWaitForCompletion();
+
+            transform.DOLocalRotate(Vector3.back * 360 * 9, .9f, RotateMode.LocalAxisAdd).SetEase(OutQuad);
+            await transform.DOScale(0, .9f).From().SetEase(InQuad).AsyncWaitForCompletion();
         }
 
         public Task PrintAtEnd(DateTime dateTime)
