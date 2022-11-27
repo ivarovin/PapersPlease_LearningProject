@@ -1,14 +1,20 @@
 {
-    "name": "PapersPlease.View",
-    "rootNamespace": "",
-    "references": ["PapersPlease.Model", "PapersPlease.Controller", "Unity.TextMeshPro", "Zenject"],
-    "includePlatforms": [],
-    "excludePlatforms": [],
-    "allowUnsafeCode": true,
-    "overrideReferences": false,
-    "precompiledReferences": [],
-    "autoReferenced": true,
-    "defineConstraints": [],
-    "versionDefines": [],
-    "noEngineReferences": false
+  "name": "PapersPlease.View",
+  "rootNamespace": "",
+  "references": [
+    "PapersPlease.Model",
+    "PapersPlease.Controller",
+    "Unity.TextMeshPro",
+    "Zenject",
+    "DOTween.Modules"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": true,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
 }
