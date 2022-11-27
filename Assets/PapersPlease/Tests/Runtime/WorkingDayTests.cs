@@ -1,13 +1,11 @@
 ﻿using System.Collections;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using FluentAssertions;
-using FluentAssertions.Extensions;
 using NUnit.Framework;
 using PapersPlease.Runtime.View;
-using RGV.TestApi.Runtime;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
+using static PapersPlease.Tests.Runtime.Wait;
 using static RGV.TestApi.Runtime.TestApi.Fake;
 using static RGV.TestApi.Runtime.TestApi.Find;
 
@@ -15,9 +13,6 @@ namespace PapersPlease.Tests.Runtime
 {
     public class WorkingDayTests
     {
-        static Task kindaSecond => Task.Delay(1100.Milliseconds());
-        static YieldAwaitable aFrame => Task.Yield();
-
         [UnitySetUp]
         public IEnumerator Setup()
         {
@@ -29,7 +24,7 @@ namespace PapersPlease.Tests.Runtime
         {
             ClickOn<Speaker>();
 
-            await kindaSecond;
+            await aSecond;
 
             TextOnLabelOf<DigitalClock>().Should().Be("06:00:01");
         }
@@ -60,7 +55,7 @@ namespace PapersPlease.Tests.Runtime
             ClickOn<Speaker>();
             ClickOn<ForwardingInput>();
 
-            await kindaSecond;
+            await aSecond;
 
             TextOnLabelOf<DigitalClock>().Should().Be("07:00:01");
         }

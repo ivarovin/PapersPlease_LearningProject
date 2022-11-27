@@ -16,8 +16,15 @@ namespace PapersPlease.Runtime.Controller
             this.endController = endController;
         }
 
+        /// Ahora como mucho te pasa el mismo día de una vez, nunca más de uno.
         public void InjectTime(TimeSpan time)
         {
+            if(time > day.TimeToOver)
+            {
+                endController.Execute(day);
+                return;
+            }
+            
             day.Forward(time);
             view.Print(day.TimeOfDay);
             

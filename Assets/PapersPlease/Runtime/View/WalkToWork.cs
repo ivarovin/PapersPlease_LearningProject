@@ -5,7 +5,7 @@ using Zenject;
 
 namespace PapersPlease.Runtime.View
 {
-    public class StartDayInput : MonoBehaviour
+    public class WalkToWork : MonoBehaviour
     {
         [Inject]
         StartDay controller;

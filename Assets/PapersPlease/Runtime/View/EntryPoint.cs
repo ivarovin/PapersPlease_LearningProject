@@ -12,6 +12,15 @@ namespace PapersPlease.Runtime.View
         void Update()
         {
             time.InjectTime(TimeSpan.FromSeconds(Time.deltaTime));
+            
+            if(Input.GetKeyDown(KeyCode.Space))
+                EndDayAtOnce();
+        }
+
+        /// QA. Refactor. 
+        public void EndDayAtOnce()
+        {
+            time.InjectTime(TimeSpan.FromHours(23));
         }
     }
 }

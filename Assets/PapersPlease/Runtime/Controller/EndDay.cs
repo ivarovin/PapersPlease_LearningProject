@@ -1,7 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using PapersPlease.Runtime.Model;
-using Unity.Plastic.Newtonsoft.Json;
 
 namespace PapersPlease.Runtime.Controller
 {

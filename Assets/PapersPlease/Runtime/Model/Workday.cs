@@ -4,23 +4,28 @@ namespace PapersPlease.Runtime.Model
 {
     public class Workday
     {
-        DateTime when;
-        public TimeSpan TimeOfDay => when.TimeOfDay;
-        public bool IsOver => when.TimeOfDay > TimeSpan.FromHours(18);
+        readonly Worktime schedule = Worktime.Default;
+        DateTime now;
+        
+        public TimeSpan TimeOfDay => now.TimeOfDay;
+        public bool IsOver => TimeToOver < TimeSpan.Zero;
+        public TimeSpan TimeToOver => schedule.End - now.TimeOfDay;
 
         bool isPassing;
 
+        public Workday(DateTime day)
+        {
+            now = day + schedule.Start;
+        }
+
         public static Workday FirstOne()
         {
-            return new Workday()
-            {
-                when = new DateTime(1982, 11, 23).AddHours(6)
-            };
+            return new Workday(new DateTime(1982, 11, 23));
         }
         
         public void SpendDay()
         {
-            when = when.Date.AddDays(1).AddHours(6);
+            now = now.Date.AddDays(1) + schedule.Start;
             isPassing = false;
         }
 
@@ -29,14 +34,14 @@ namespace PapersPlease.Runtime.Model
             if(!isPassing)
                 return;
             
-            when = when.Add(howMuch);
+            now = now.Add(howMuch);
         }
         
         public void Start() => isPassing = true;
         
         public static implicit operator DateTime(Workday workday)
         {
-            return workday.when;
+            return workday.now;
         }
     }
 }
