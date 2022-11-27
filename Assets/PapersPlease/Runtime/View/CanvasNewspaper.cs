@@ -6,14 +6,13 @@ using TMPro;
 using UnityEngine;
 using static DG.Tweening.Ease;
 
-
 namespace PapersPlease.Runtime.View
 {
-    public class Newspaper : MonoBehaviour, DayView
+    public class CanvasNewspaper : MonoBehaviour, Newspaper
     {
         [SerializeField] TextMeshProUGUI date;
-        
-        public async Task PrintAtStart(DateTime dateTime)
+
+        public async Task Open(DateTime dateTime)
         {
             gameObject.SetActive(true);
             date.text = $"{dateTime:dd/MM/yyyy}";
@@ -22,9 +21,10 @@ namespace PapersPlease.Runtime.View
             await transform.DOScale(0, .9f).From().SetEase(InQuad).AsyncWaitForCompletion();
         }
 
-        public Task PrintAtEnd(DateTime dateTime)
+        public async Task Close()
         {
-            return FindObjectOfType<LabelDayView>().PrintAtEnd(dateTime);
+            gameObject.SetActive(false);
+            await Task.Delay(799);
         }
     }
 }

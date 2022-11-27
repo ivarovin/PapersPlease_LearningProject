@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using FluentAssertions.Extensions;
 using TMPro;
@@ -15,7 +14,7 @@ namespace PapersPlease.Tests.Runtime
 
         public static string TextOnChildLabelOf<T>() where T : MonoBehaviour
         {
-            return Object.FindObjectOfType<T>().GetComponentsInChildren<TMP_Text>().Single().text;
+            return Object.FindObjectOfType<T>().GetComponentInChildren<TMP_Text>().text;
         }
         
         public static async Task ToChange(this TextMeshProUGUI label)

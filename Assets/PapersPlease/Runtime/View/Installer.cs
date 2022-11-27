@@ -12,7 +12,7 @@ namespace PapersPlease.Runtime.View
             InstallControllers();
             InstallViews();
         }
-        
+
         void InstallModels()
         {
             Container.BindInterfacesAndSelfTo<Workday>().FromInstance(Workday.FirstOne()).AsSingle();
@@ -20,8 +20,11 @@ namespace PapersPlease.Runtime.View
 
         void InstallViews()
         {
-            Container.BindInterfacesTo<Newspaper>().FromComponentInHierarchy().AsSingle().NonLazy();
+            Container.BindInterfacesTo<CanvasNewspaper>().FromComponentInHierarchy().AsSingle();
             Container.BindInterfacesTo<DigitalClock>().FromComponentInHierarchy().AsSingle();
+            Container.BindInterfacesTo<WalkToWorkButton>().FromComponentsInHierarchy().AsSingle();
+            Container.BindInterfacesTo<Typewriter>().FromComponentsInHierarchy().AsSingle();
+            Container.BindInterfacesTo<SpeakerButton>().FromComponentsInHierarchy().AsSingle();
         }
 
         void InstallControllers()

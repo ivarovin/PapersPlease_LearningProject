@@ -13,7 +13,7 @@ namespace PapersPlease.Tests.Runtime
         public async Task ShowNewspaper_WhenLoadGame()
         {
             await aSecond;
-            Object.FindObjectOfType<Newspaper>().isActiveAndEnabled.Should().BeTrue();
+            Object.FindObjectOfType<CanvasNewspaper>().isActiveAndEnabled.Should().BeTrue();
         }
     }
 }

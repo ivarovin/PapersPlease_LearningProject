@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using PapersPlease.Runtime.Model;
 
 namespace PapersPlease.Runtime.Controller
@@ -7,13 +8,12 @@ namespace PapersPlease.Runtime.Controller
     {
         readonly Workday day;
         readonly Clock view;
-        readonly EndDay endController;
-        
-        public TimePassage(Workday day, Clock view, EndDay endController)
+        TaskCompletionSource<bool> promise;
+
+        public TimePassage(Workday day, Clock view)
         {
             this.day = day;
             this.view = view;
-            this.endController = endController;
         }
 
         /// Ahora como mucho te pasa el mismo día de una vez, nunca más de uno.
@@ -21,15 +21,21 @@ namespace PapersPlease.Runtime.Controller
         {
             if(time > day.TimeToOver)
             {
-                endController.Execute(day);
+                promise?.SetResult(true);
                 return;
             }
-            
+
             day.Forward(time);
             view.Print(day.TimeOfDay);
-            
+
             if(day.IsOver)
-                endController.Execute(day);
+                promise?.SetResult(true);
+        }
+
+        public async Task WaitForEndOfWorkday()
+        {
+            promise = new TaskCompletionSource<bool>();
+            await promise.Task;
         }
     }
 }

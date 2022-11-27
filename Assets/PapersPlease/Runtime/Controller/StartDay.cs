@@ -5,18 +5,18 @@ namespace PapersPlease.Runtime.Controller
 {
     public class StartDay
     {
-        readonly DayView view;
         readonly Workday model;
+        readonly NewDay view;
         
-        public StartDay(Workday model, DayView view)
+        public StartDay(Workday model, NewDay view)
         {
             this.model = model;
             this.view = view;
         }
 
-        public Task Execute()
+        public Task Run()
         {
-            return view.PrintAtStart(model);
+            return view.StartAt(model);
         }
     }
 }

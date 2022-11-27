@@ -13,7 +13,7 @@ namespace PapersPlease.Tests.Runtime
         [Test]
         public async Task WorkingDayStartsWithFirstImmigrant()
         {
-            ClickOn<Speaker>();
+            ClickOn<SpeakerButton>();
 
             await aSecond;
 
@@ -23,7 +23,7 @@ namespace PapersPlease.Tests.Runtime
         [Test]
         public async Task WorkingDay_StartsAtSixAM()
         {
-            ClickOn<Speaker>();
+            ClickOn<SpeakerButton>();
 
             await aFrame;
 
@@ -43,7 +43,7 @@ namespace PapersPlease.Tests.Runtime
         [Test]
         public async Task Forwarding_DuringWorkday()
         {
-            ClickOn<Speaker>();
+            ClickOn<SpeakerButton>();
             ClickOn<ForwardingInput>();
 
             await aSecond;

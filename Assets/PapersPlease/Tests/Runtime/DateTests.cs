@@ -15,40 +15,40 @@ namespace PapersPlease.Tests.Runtime
         [Test]
         public async Task GoToWork_ShowsTheDay()
         {
-            ClickOn<WalkToWork>();
+            ClickOn<WalkToWorkButton>();
 
             await aSecond;
 
-            TextOnChildLabelOf<Newspaper>().Should().Be($"{23.November(1982):dd/MM/yyyy}");
+            TextOnChildLabelOf<Typewriter>().Should().Be($"Day started: {23.November(1982):dd/MM/yyyy}");
         }
 
         [Test]
         public async Task FinishWorkday_ShowsDayEnded()
         {
-            ClickOn<WalkToWork>();
-            ClickOn<Speaker>();
+            ClickOn<WalkToWorkButton>();
+            ClickOn<SpeakerButton>();
             await aSecondOdd;
 
             FindObjectOfType<EntryPoint>().EndDayAtOnce();
             await aSecondOdd;
 
-            TextOnLabelOf<LabelDayView>().Should().Be($"Day ended: {23.November(1982):dd/MM/yyyy}");
+            TextOnLabelOf<Typewriter>().Should().Be($"Day ended: {23.November(1982):dd/MM/yyyy}");
         }
 
         [Test]
         public async Task EndDay_ThenStartDay_PassesToNextDay()
         {
-            ClickOn<WalkToWork>();
-            ClickOn<Speaker>();
+            ClickOn<WalkToWorkButton>();
+            ClickOn<SpeakerButton>();
             await aSecondOdd;
             
             FindObjectOfType<EntryPoint>().EndDayAtOnce();
             await aSecondOdd;
             
-            ClickOn<WalkToWork>();
+            ClickOn<WalkToWorkButton>();
             await aSecondOdd;
 
-            TextOnChildLabelOf<Newspaper>().Should().Be($"{24.November(1982):dd/MM/yyyy}");
+            TextOnChildLabelOf<Typewriter>().Should().Be($"Day ended: {24.November(1982):dd/MM/yyyy}");
         }
     }
 }

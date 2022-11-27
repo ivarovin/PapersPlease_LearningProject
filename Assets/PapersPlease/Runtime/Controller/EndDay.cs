@@ -5,17 +5,19 @@ namespace PapersPlease.Runtime.Controller
 {
     public class EndDay
     {
-        readonly DayView view;
+        readonly Workday model;
+        readonly ExpensesReport view;
 
-        public EndDay(DayView view)
+        public EndDay(Workday model, ExpensesReport view)
         {
-           this.view = view;
+            this.model = model;
+            this.view = view;
         }
 
-        public Task Execute(Workday day)
+        public Task Run()
         {
-            var task = view.PrintAtEnd(day);
-            day.SpendDay();
+            var task = view.OfDay(model.DaysSinceBeginning);
+            model.SpendDay();
             return task;
         }
     }

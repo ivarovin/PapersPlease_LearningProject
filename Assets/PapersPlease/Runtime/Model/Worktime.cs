@@ -11,7 +11,7 @@ namespace PapersPlease.Runtime.Model
         public static Worktime Default { get; } =  new Worktime
         {
             Start = TimeSpan.FromHours(6),
-            End = TimeSpan.FromHours(18)
+            End = TimeSpan.FromHours(6) + TimeSpan.FromSeconds(15)
         };
     }
 }

@@ -10,6 +10,7 @@ namespace PapersPlease.Runtime.Model
         public TimeSpan TimeOfDay => now.TimeOfDay;
         public bool IsOver => TimeToOver < TimeSpan.Zero;
         public TimeSpan TimeToOver => schedule.End - now.TimeOfDay;
+        public int DaysSinceBeginning => (int)now.Subtract(FirstOne().now).TotalDays; 
 
         bool isPassing;
 

@@ -5,18 +5,22 @@ namespace PapersPlease.Runtime.Controller
 {
     public class ShowNewspaper
     {
-        readonly DayView view;
-        readonly Workday model;
+        readonly WalkToWork walkToWork;
+        readonly Newspaper newspaper;
+        readonly Workday day;
 
-        public ShowNewspaper(DayView view, Workday model)
+        public ShowNewspaper(WalkToWork walkToWork, Newspaper newspaper, Workday day)
         {
-            this.view = view;
-            this.model = model;
+            this.walkToWork = walkToWork;
+            this.newspaper = newspaper;
+            this.day = day;
         }
 
         public async Task Run()
         {
-            await view.PrintAtStart(model);
+            await newspaper.Open(day);
+            await walkToWork.Listen();
+            await newspaper.Close();
         }
     }
 }
