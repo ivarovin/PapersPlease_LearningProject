@@ -14,11 +14,10 @@ namespace PapersPlease.Runtime.Controller
             this.view = view;
         }
 
-        public Task Run()
+        public async Task Run()
         {
-            var task = view.OfDay(model.DaysSinceBeginning);
+            await view.OfDay(model.DaysSinceBeginning);
             model.SpendDay();
-            return task;
         }
     }
 }

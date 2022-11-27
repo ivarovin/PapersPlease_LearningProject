@@ -92,5 +92,17 @@ namespace PapersPlease.Tests.Editor
             
             sut.DaysSinceBeginning.Should().Be(1);
         }
+
+        [Test]
+        public void DaysFrom_TheFirstWorkday_IncrementEachDay()
+        {
+            var sut = new Workday(Workday.FirstOne);
+            sut.Start();
+            
+            sut.SpendDay();
+            sut.SpendDay();
+            
+            sut.DaysSinceBeginning.Should().Be(3);
+        }
     }
 }

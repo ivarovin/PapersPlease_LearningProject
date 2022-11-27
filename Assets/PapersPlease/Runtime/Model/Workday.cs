@@ -13,7 +13,7 @@ namespace PapersPlease.Runtime.Model
         public bool IsOver => TimeToOver <= TimeSpan.FromSeconds(1);
         public TimeSpan TimeToOver => schedule.End - date.TimeOfDay;
         
-        public int DaysSinceBeginning => (int)date.Subtract(FirstOne.date).TotalDays + 1; 
+        public int DaysSinceBeginning => 1 + (int)date.Date.Subtract(FirstOne.date.Date).TotalDays; 
         
         public Workday(DateTime day)
         {
@@ -26,7 +26,7 @@ namespace PapersPlease.Runtime.Model
             date = day + schedule.Start;
         }
 
-        public static Workday FirstOne { get; } = new(new DateTime(1982, 11, 23));
+        public static Workday FirstOne => new(new DateTime(1982, 11, 23));
 
         public void Start() => isPassing = true;
 
