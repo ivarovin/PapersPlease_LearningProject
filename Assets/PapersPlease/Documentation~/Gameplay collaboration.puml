@@ -1,0 +1,25 @@
+﻿@startuml
+skin rose
+left to right direction 
+allow_mixing
+
+control Gameplay
+control ShowNewspaper
+    boundary Newspaper
+    boundary WalkToWork
+control StartDay
+    boundary NewDay
+control EndDay
+    boundary ExpensesReport
+
+Gameplay --> ShowNewspaper : 1
+    ShowNewspaper --> Newspaper : 2. open
+    ShowNewspaper --> WalkToWork : 3. listen
+    ShowNewspaper --> Newspaper : 4. close
+
+Gameplay --> StartDay : 5
+    StartDay --> NewDay : 6
+Gameplay --> EndDay : 7
+    EndDay --> ExpensesReport : 8
+
+@enduml
