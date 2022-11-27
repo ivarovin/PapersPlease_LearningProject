@@ -14,6 +14,7 @@ package Gameplay{
     usecase EndDay
     usecase StartDay
     usecase StartWorkday
+    usecase ShowNewspaper
     usecase EndWorkday
     usecase PassTime
     usecase CheckDailyRules
@@ -27,6 +28,7 @@ package Gameplay{
     System .u.> StartWorkday
     System .u.> EndDay
     System .u.> StartDay
+    System .u.> ShowNewspaper
 }
 
 Player ..> CallForNextImmigrant

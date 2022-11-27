@@ -1,8 +1,9 @@
 ﻿@startuml
 skin rose
 
-[*] --> StartDay
+[*] --> ShowNewspaper
 
+ShowNewspaper --> StartDay
 StartDay --> CheckRules
 CheckRules --> CallForNextImmigrant : player calls next
 CallForNextImmigrant --> InspectPassport
@@ -16,7 +17,7 @@ AcceptPassport --> CallForNextImmigrant : player calls next
 RejectPassport --> CallForNextImmigrant : player calls next
 EndWorkday --> ManageDailySalary
 ManageDailySalary --> EndDay
-EndDay --> StartDay
+EndDay --> ShowNewspaper
 
 
 @enduml
