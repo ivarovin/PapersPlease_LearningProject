@@ -1,7 +1,5 @@
-﻿using System.Linq;
-using PapersPlease.Runtime.Controller;
+﻿using PapersPlease.Runtime.Controller;
 using PapersPlease.Runtime.Model;
-using UnityEngine;
 using Zenject;
 
 namespace PapersPlease.Runtime.View
@@ -32,17 +30,11 @@ namespace PapersPlease.Runtime.View
 
         void InstallViews()
         {
-            Debug.Log(FindObjectsOfType<CanvasNewspaper>().Any());
-            InstallNewspaper();
+            Container.BindInterfacesTo<CanvasNewspaper>().FromComponentInHierarchy().AsSingle();
             Container.BindInterfacesTo<DigitalClock>().FromComponentInHierarchy().AsSingle();
+            Container.BindInterfacesTo<WalkToWorkButton>().FromComponentsInHierarchy().AsSingle();
             Container.BindInterfacesTo<Typewriter>().FromComponentsInHierarchy().AsSingle();
             Container.BindInterfacesTo<SpeakerButton>().FromComponentsInHierarchy().AsSingle();
-        }
-
-        void InstallNewspaper()
-        {
-            Container.BindInterfacesTo<CanvasNewspaper>().FromInstance(FindObjectsOfType<CanvasNewspaper>().Single()).AsSingle();
-            Container.BindInterfacesTo<WalkToWorkButton>().FromInstance(FindObjectsOfType<WalkToWorkButton>().Single()).AsSingle();
         }
     }
 }
