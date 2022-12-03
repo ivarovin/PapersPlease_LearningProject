@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using PapersPlease.Runtime.Model;
 
 namespace PapersPlease.Runtime.Controller
@@ -16,7 +17,7 @@ namespace PapersPlease.Runtime.Controller
             this.speaker = speaker;
         }
 
-        public async Task Run()
+        public async Task Run(TimeSpan realtimeWorkday)
         {
             await speaker.Listen();
             await speaker.ShowCall();
@@ -24,7 +25,7 @@ namespace PapersPlease.Runtime.Controller
             if(!IsFirstImmigrantToday)
                 return;
 
-            workday.Start();
+            workday.Start(realtimeWorkday);
         }
     }
 }

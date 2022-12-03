@@ -5,6 +5,7 @@ namespace PapersPlease.Runtime.Model
     public class Workday
     {
         readonly Worktime schedule = Worktime.Default;
+        TimeSpan realtimeDuration;
         DateTime date;
         bool isPassing;
 
@@ -28,9 +29,14 @@ namespace PapersPlease.Runtime.Model
 
         public static Workday FirstOne => new(new DateTime(1982, 11, 23));
 
-        public void Start() => isPassing = true;
+        public void Start() => Start(schedule.Duration);
+        public void Start(TimeSpan thisRealtimeDuration)
+        {
+            realtimeDuration = thisRealtimeDuration;
+            isPassing = true;
+        }
 
-        
+
         public void SpendDay()
         {
             date = date.Date.AddDays(1) + schedule.Start;
@@ -41,8 +47,8 @@ namespace PapersPlease.Runtime.Model
         {
             if(!isPassing)
                 return;
-            
-            date = date.Add(howMuch);
+
+            date = date.Add(howMuch * (schedule.Duration / realtimeDuration));
         }
         
         public static implicit operator DateTime(Workday workday)

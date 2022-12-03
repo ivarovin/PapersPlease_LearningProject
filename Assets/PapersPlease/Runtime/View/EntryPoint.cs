@@ -7,12 +7,14 @@ namespace PapersPlease.Runtime.View
 {
     public class EntryPoint : MonoBehaviour
     {
+        public static TimeSpan RealtimeWorkday = TimeSpan.FromMinutes(8);
+        
         [Inject] TimePassage time;
         [Inject] Gameplay gameplay;
 
         async void Start()
         {
-            await gameplay.Run();
+            await gameplay.Run(RealtimeWorkday);
         }
         
         void Update()

@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using PapersPlease.Runtime.Model;
 
@@ -21,14 +22,14 @@ namespace PapersPlease.Runtime.Controller
             this.workdayModel = workdayModel;
         }
 
-        public async Task Run()
+        public async Task Run(TimeSpan realtimeWorkday)
         {
             while(true)
             {
                 await showNewspaper.Run();
                 await startDay.Run();
 
-                do { await callNext.Run(); }
+                do { await callNext.Run(realtimeWorkday); }
                 while(!workdayModel.IsOver);
 
                 await endDay.Run();
