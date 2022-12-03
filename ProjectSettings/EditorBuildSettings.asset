@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/PapersPlease/Scenes/WalkingSkeleton.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/PapersPlease/Scenes/Newspaper.unity
+    guid: 965b50f152ace4d498186ed001798a05
   m_configObjects: {}

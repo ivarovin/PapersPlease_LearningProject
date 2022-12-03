@@ -10,10 +10,12 @@ namespace PapersPlease.Runtime.View
 {
     public class CanvasNewspaper : MonoBehaviour, Newspaper
     {
+        [SerializeField] GameObject background;
         [SerializeField] TextMeshProUGUI date;
 
         public async Task Open(DateTime dateTime)
         {
+            background.SetActive(true);
             gameObject.SetActive(true);
             date.text = $"{dateTime:dd/MM/yyyy}";
 
@@ -26,6 +28,7 @@ namespace PapersPlease.Runtime.View
         {
             await GetComponent<CanvasGroup>().DOFade(0, .45f).AsyncWaitForCompletion();
             gameObject.SetActive(false);
+            background.SetActive(false);
         }
     }
 }
