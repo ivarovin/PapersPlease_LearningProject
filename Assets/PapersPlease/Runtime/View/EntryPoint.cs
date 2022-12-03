@@ -7,7 +7,7 @@ namespace PapersPlease.Runtime.View
 {
     public class EntryPoint : MonoBehaviour
     {
-        public static TimeSpan RealtimeWorkday = TimeSpan.FromMinutes(8);
+        public static TimeSpan RealtimeWorkday = TimeSpan.FromSeconds(8);
         
         [Inject] TimePassage time;
         [Inject] Gameplay gameplay;
@@ -28,7 +28,7 @@ namespace PapersPlease.Runtime.View
         /// QA. Refactor. 
         public void EndDayAtOnce()
         {
-            time.Inject(TimeSpan.FromHours(23));
+            time.Inject(RealtimeWorkday);
         }
     }
 }

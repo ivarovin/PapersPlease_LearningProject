@@ -29,6 +29,7 @@ namespace PapersPlease.Runtime.Model
 
         public static Workday FirstOne => new(new DateTime(1982, 11, 23));
 
+        [Obsolete("To be deleted.")]
         public void Start() => Start(schedule.Duration);
         public void Start(TimeSpan thisRealtimeDuration)
         {
@@ -43,12 +44,13 @@ namespace PapersPlease.Runtime.Model
             isPassing = false;
         }
 
-        public void Forward(TimeSpan howMuch)
+        public void Forward(TimeSpan realTime)
         {
             if(!isPassing)
                 return;
-
-            date = date.Add(howMuch * (schedule.Duration / realtimeDuration));
+            
+            var virtualTime = realTime * (schedule.Duration / realtimeDuration);
+            date = date.Add(virtualTime < TimeToOver ? virtualTime : TimeToOver);
         }
         
         public static implicit operator DateTime(Workday workday)

@@ -104,5 +104,37 @@ namespace PapersPlease.Tests.Editor
             
             sut.DaysSinceBeginning.Should().Be(3);
         }
+
+        [Test]
+        public void RealTimeDuration_AffectsHowTimePasses()
+        {
+            var doc = new Worktime
+            {
+                Start = 10.Hours(),
+                End = 14.Hours()
+            };
+            var sut = new Workday(1.January(2000), doc);
+            
+            sut.Start(thisRealtimeDuration: 2.Hours());
+            sut.Forward(1.Hours());
+            
+            sut.TimeOfDay.Should().Be(12.Hours());
+        }
+
+        [Test]
+        public void Forward_MoreThanTimeToOver_ClampsAtTimeToOver()
+        {
+            var doc = new Worktime
+            {
+                Start = 10.Hours(),
+                End = 14.Hours()
+            };
+            var sut = new Workday(1.January(2000), doc);
+            sut.Start();
+            
+            sut.Forward(23.Hours());
+            
+            sut.TimeOfDay.Should().Be(doc.End);
+        }
     }
 }
