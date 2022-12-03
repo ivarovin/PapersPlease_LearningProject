@@ -4,14 +4,14 @@ using PapersPlease.Runtime.Model;
 
 namespace PapersPlease.Runtime.Controller
 {
-    public class CallForNextImmigrant
+    public class CallForNextEntrant
     {
         readonly Workday workday;
         readonly Speaker speaker;
 
-        const bool IsFirstImmigrantToday = true;
+        const bool IsFirstEntrantToday = true;
 
-        public CallForNextImmigrant(Workday workday, Speaker speaker)
+        public CallForNextEntrant(Workday workday, Speaker speaker)
         {
             this.workday = workday;
             this.speaker = speaker;
@@ -22,7 +22,7 @@ namespace PapersPlease.Runtime.Controller
             await speaker.Listen();
             await speaker.ShowCall();
             
-            if(!IsFirstImmigrantToday)
+            if(!IsFirstEntrantToday)
                 return;
 
             workday.Start(realtimeWorkday);

@@ -19,7 +19,7 @@ namespace PapersPlease.Tests.Runtime
         }
 
         [Test]
-        public async Task WorkingDayStartsWithFirstImmigrant()
+        public async Task WorkingDayStartsWithFirstEntrant()
         {
             await WalkToWork();
             ClickOn<SpeakerButton>();

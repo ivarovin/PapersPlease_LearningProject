@@ -22,7 +22,7 @@ namespace PapersPlease.Runtime.View
         {
             Container.Bind<StartDay>().AsSingle();
             Container.Bind<EndDay>().AsSingle();
-            Container.Bind<CallForNextImmigrant>().AsSingle();
+            Container.Bind<CallForNextEntrant>().AsSingle();
             Container.Bind<TimePassage>().AsSingle();
             Container.Bind<ShowNewspaper>().AsSingle();
             Container.Bind<Gameplay>().AsSingle();

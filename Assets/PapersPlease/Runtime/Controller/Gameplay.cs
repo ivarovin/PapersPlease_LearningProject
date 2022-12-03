@@ -8,12 +8,12 @@ namespace PapersPlease.Runtime.Controller
     {
         readonly ShowNewspaper showNewspaper;
         readonly StartDay startDay;
-        readonly CallForNextImmigrant callNext;
+        readonly CallForNextEntrant callNext;
         readonly EndDay endDay;
 
         readonly Workday workdayModel;
 
-        public Gameplay(ShowNewspaper showNewspaper, StartDay startDay, CallForNextImmigrant callNext, TimePassage timePassage, EndDay endDay, Workday workdayModel)
+        public Gameplay(ShowNewspaper showNewspaper, StartDay startDay, CallForNextEntrant callNext, TimePassage timePassage, EndDay endDay, Workday workdayModel)
         {
             this.showNewspaper = showNewspaper;
             this.startDay = startDay;
