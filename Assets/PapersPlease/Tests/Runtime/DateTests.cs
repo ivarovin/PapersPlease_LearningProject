@@ -12,43 +12,57 @@ namespace PapersPlease.Tests.Runtime
 {
     public class DateTests : WalkingSkeletonFixture
     {
+        static async Task WalkToWork()
+        {
+            await aSecond;
+            ClickOn<WalkToWorkButton>();
+            await aSecond;
+            await aFrame;
+        }
+
         [Test]
         public async Task GoToWork_ShowsTheDay()
         {
-            ClickOn<WalkToWorkButton>();
+            await WalkToWork();
 
-            await aSecond;
-
-            TextOnChildLabelOf<Typewriter>().Should().Be($"Day started: {23.November(1982):dd/MM/yyyy}");
+            TextOnChildLabelOf<Typewriter>().Should().Be($"{23.November(1982):dd/MM/yyyy}");
         }
 
         [Test]
         public async Task FinishWorkday_ShowsDayEnded()
         {
-            ClickOn<WalkToWorkButton>();
+            await WalkToWork();
+
             ClickOn<SpeakerButton>();
             await aSecondOdd;
 
             FindObjectOfType<EntryPoint>().EndDayAtOnce();
             await aSecondOdd;
 
-            TextOnLabelOf<Typewriter>().Should().Be($"Day ended: {23.November(1982):dd/MM/yyyy}");
+            ClickOn<SpeakerButton>();
+            await aSecond;
+            
+            TextOnLabelOf<Typewriter>().Should().Be("End of day 1");
         }
 
         [Test]
         public async Task EndDay_ThenStartDay_PassesToNextDay()
         {
-            ClickOn<WalkToWorkButton>();
+            await WalkToWork();
+
             ClickOn<SpeakerButton>();
             await aSecondOdd;
-            
+
             FindObjectOfType<EntryPoint>().EndDayAtOnce();
             await aSecondOdd;
             
-            ClickOn<WalkToWorkButton>();
-            await aSecondOdd;
+            ClickOn<SpeakerButton>();
+            await aSecond;
 
-            TextOnChildLabelOf<Typewriter>().Should().Be($"Day ended: {24.November(1982):dd/MM/yyyy}");
+            await WalkToWork();
+            await aSecond;
+
+            TextOnChildLabelOf<Typewriter>().Should().Be($"{24.November(1982):dd/MM/yyyy}");
         }
     }
 }
