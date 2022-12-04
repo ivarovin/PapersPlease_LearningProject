@@ -15,7 +15,7 @@ namespace PapersPlease.Tests.Runtime
             await aSecond;
             ClickOn<WalkToWorkButton>();
             await aSecond;
-            await aFrame;
+            await aSecond;
         }
 
         [Test]

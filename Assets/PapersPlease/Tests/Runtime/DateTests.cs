@@ -61,6 +61,7 @@ namespace PapersPlease.Tests.Runtime
 
             await WalkToWork();
             await aSecond;
+            await aSecond;
 
             TextOnChildLabelOf<Typewriter>().Should().Be($"{24.November(1982):dd/MM/yyyy}");
         }

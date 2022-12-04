@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using DG.Tweening;
 using PapersPlease.Runtime.Model;
 using PapersPlease.Runtime.View;
 using UnityEngine.SceneManagement;
@@ -24,6 +25,8 @@ namespace PapersPlease.Tests.Runtime
         public IEnumerator TearDown()
         {
             EntryPoint.RealtimeWorkday = originalRealtimeWorkday;
+            yield return null;
+            DOTween.CompleteAll(); // ¿Kill o Complete?
             yield return null;
         }
     }

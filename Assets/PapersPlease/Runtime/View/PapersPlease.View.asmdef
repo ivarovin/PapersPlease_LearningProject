@@ -6,7 +6,8 @@
     "PapersPlease.Controller",
     "Unity.TextMeshPro",
     "Zenject",
-    "DOTween.Modules"
+    "DOTween.Modules",
+    "Febucci.TextAnimator.Runtime"
   ],
   "includePlatforms": [],
   "excludePlatforms": [],
