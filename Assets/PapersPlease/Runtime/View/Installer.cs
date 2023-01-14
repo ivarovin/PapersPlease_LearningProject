@@ -35,6 +35,7 @@ namespace PapersPlease.Runtime.View
             Container.BindInterfacesTo<WalkToWorkButton>().FromComponentsInHierarchy().AsSingle();
             Container.BindInterfacesTo<Typewriter>().FromComponentsInHierarchy().AsSingle();
             Container.BindInterfacesTo<SpeakerButton>().FromComponentsInHierarchy().AsSingle();
+            Container.BindInterfacesTo<EndDayScreen>().FromComponentsInHierarchy().AsSingle();
         }
     }
 }

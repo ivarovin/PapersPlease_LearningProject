@@ -14,21 +14,21 @@ namespace PapersPlease.Tests.Editor
             //Arrange
             var dummy = Workday.FirstOne;
             dummy.Start();
-            
+
             var mock = Substitute.For<ExpensesReport>();
-            mock.OfDay(default).ReturnsForAnyArgs(Task.CompletedTask);
-            
+            mock.OfDay(default, default).ReturnsForAnyArgs(Task.CompletedTask);
+
             var sut = new EndDay(dummy, mock);
-            
+
             await sut.Run();
             mock.ClearReceivedCalls();
             dummy.Start();
-            
+
             //Act
             await sut.Run();
-            
+
             //Assert
-            await mock.Received(1).OfDay(2);
+            await mock.Received(1).OfDay(2, Arg.Any<EconomicBalance>());
         }
     }
 }

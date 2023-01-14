@@ -1,8 +1,10 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using FluentAssertions.Extensions;
+using PapersPlease.Runtime.View;
 using TMPro;
 using UnityEngine;
+using static RGV.TestApi.Runtime.TestApi.Fake;
 
 namespace PapersPlease.Tests.Runtime
 {
@@ -30,6 +32,14 @@ namespace PapersPlease.Tests.Runtime
                 if(o == label)
                     tcs.SetResult(true);
             }
+        }
+        
+        public static async Task WalkToWork()
+        {
+            await aSecond;
+            ClickOn<WalkToWorkButton>();
+            await aSecond;
+            await aSecond;
         }
     }
 }

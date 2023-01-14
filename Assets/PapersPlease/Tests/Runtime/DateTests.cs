@@ -12,20 +12,12 @@ namespace PapersPlease.Tests.Runtime
 {
     public class DateTests : WalkingSkeletonFixture
     {
-        static async Task WalkToWork()
-        {
-            await aSecond;
-            ClickOn<WalkToWorkButton>();
-            await aSecond;
-            await aFrame;
-        }
-
         [Test]
         public async Task GoToWork_ShowsTheDay()
         {
             await WalkToWork();
 
-            TextOnChildLabelOf<Typewriter>().Should().Be($"{23.November(1982):dd/MM/yyyy}");
+            TextOnChildLabelOf<Typewriter>().Should().Be($"{23.November(1982):dd MM yyyy}");
         }
 
         [Test]
@@ -63,7 +55,7 @@ namespace PapersPlease.Tests.Runtime
             await aSecond;
             await aSecond;
 
-            TextOnChildLabelOf<Typewriter>().Should().Be($"{24.November(1982):dd/MM/yyyy}");
+            TextOnChildLabelOf<Typewriter>().Should().Be($"{24.November(1982):dd MM yyyy}");
         }
     }
 }

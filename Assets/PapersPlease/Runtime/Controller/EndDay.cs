@@ -16,7 +16,7 @@ namespace PapersPlease.Runtime.Controller
 
         public async Task Run()
         {
-            await view.OfDay(model.DaysSinceBeginning);
+            await view.OfDay(model.DaysSinceBeginning, new EconomicBalance());
             model.SpendDay();
         }
     }
