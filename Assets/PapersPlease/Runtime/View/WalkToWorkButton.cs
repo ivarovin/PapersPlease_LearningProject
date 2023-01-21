@@ -7,21 +7,10 @@ namespace PapersPlease.Runtime.View
 {
     public class WalkToWorkButton : MonoBehaviour, WalkToWork
     {
-        TaskCompletionSource<bool> tcs;
-
-        void Start()
-        {
-            GetComponent<Button>().onClick.AddListener(Notify);
-        }
-
-        void Notify()
-        {
-            tcs?.SetResult(true);
-        }
-
         public async Task Listen()
         {
-            tcs = new TaskCompletionSource<bool>();
+            var tcs = new TaskCompletionSource<bool>();
+            GetComponent<Button>().onClick.AddListener(() => tcs.TrySetResult(true));
             await tcs.Task;
         }
     }
