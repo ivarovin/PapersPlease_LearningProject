@@ -31,14 +31,10 @@ namespace PapersPlease.Tests.Runtime
             TextOnLabelOf<DigitalClock>().Should().Be("06:00:01");
         }
 
-        [Test]
-        public async Task WorkingDay_StartsAtSixAM()
+        [UnityTest]
+        public IEnumerator WorkingDay_StartsAtSixAM()
         {
-            await WalkToWork();
-            ClickOn<SpeakerButton>();
-
-            await aFrame;
-
+            yield return Wait.WalkToWork();
             TextOnLabelOf<DigitalClock>().Should().Be("06:00:00");
         }
 
