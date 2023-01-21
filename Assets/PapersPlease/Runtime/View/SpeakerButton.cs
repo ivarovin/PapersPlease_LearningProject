@@ -8,18 +8,18 @@ namespace PapersPlease.Runtime.View
 {
     public class SpeakerButton : MonoBehaviour, Speaker
     {
-        TaskCompletionSource<bool> promise;
+        TaskCompletionSource<bool> tcs;
         
         void Start()
         {
-            GetComponent<Button>().onClick.AddListener(() => promise?.SetResult(true)); 
+            GetComponent<Button>().onClick.AddListener(() => tcs?.SetResult(true)); 
         }
 
         public async Task Listen()
         {
-            promise = new TaskCompletionSource<bool>();
-            await promise.Task;
-            promise = null;
+            tcs = new TaskCompletionSource<bool>();
+            await tcs.Task;
+            tcs = null;
         }
 
         public async Task ShowCall()

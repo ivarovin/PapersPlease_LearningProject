@@ -19,7 +19,7 @@ namespace PapersPlease.Tests.Runtime
         {
             yield return WalkToWork();
 
-            TextOnChildLabelOf<Typewriter>().Should().Be($"{23.November(1982):dd MM yyyy}");
+            Find.TextOnChildLabelOf<Typewriter>().Should().Be($"{23.November(1982):dd MM yyyy}");
         }
 
         [Test]
@@ -57,7 +57,7 @@ namespace PapersPlease.Tests.Runtime
             await aSecond;
             await aSecond;
 
-            TextOnChildLabelOf<Typewriter>().Should().Be($"{24.November(1982):dd MM yyyy}");
+            Find.TextOnChildLabelOf<Typewriter>().Should().Be($"{24.November(1982):dd MM yyyy}");
         }
     }
 }

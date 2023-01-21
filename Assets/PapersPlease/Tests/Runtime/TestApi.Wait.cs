@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using FluentAssertions.Extensions;
 using PapersPlease.Runtime.View;
@@ -13,17 +12,11 @@ namespace PapersPlease.Tests.Runtime
     {
         public static Task aSecond => Task.Delay(1000.Milliseconds());
         public static Task aSecondOdd => Task.Delay(1100.Milliseconds());
-        public static YieldAwaitable aFrame => Task.Yield();
 
-        public static string TextOnChildLabelOf<T>() where T : MonoBehaviour
-        {
-            return Object.FindObjectOfType<T>().GetComponentInChildren<TMP_Text>().text;
-        }
-        
         public static async Task ToChange(this TextMeshProUGUI label)
         {
             var tcs = new TaskCompletionSource<bool>();
-            
+
             TMPro_EventManager.TEXT_CHANGED_EVENT.Add(Listen);
             await tcs.Task;
             TMPro_EventManager.TEXT_CHANGED_EVENT.Remove(Listen);
@@ -34,7 +27,7 @@ namespace PapersPlease.Tests.Runtime
                     tcs.SetResult(true);
             }
         }
-        
+
         public static async Task WalkToWorkAsync()
         {
             await aSecond;
@@ -42,7 +35,7 @@ namespace PapersPlease.Tests.Runtime
             await aSecond;
             await aSecond;
         }
-        
+
         public static IEnumerator WalkToWork()
         {
             yield return TheNewspaperToBeShown();
@@ -51,20 +44,33 @@ namespace PapersPlease.Tests.Runtime
             yield return NewDayTypewriter();
         }
 
-        static IEnumerator TheNewspaperToBeShown()
+        public static IEnumerator TheNewspaperToBeShown()
         {
             yield return new WaitForSeconds(2);
         }
-        
-        static IEnumerator TheNewspaperToBeClosed()
+
+        public static IEnumerator TheNewspaperToBeClosed()
         {
             yield return new WaitForSeconds(0.5f);
         }
 
-        static IEnumerator NewDayTypewriter()
+        public static IEnumerator NewDayTypewriter()
         {
-            var typewritter = UnityEngine.Object.FindObjectOfType<Typewriter>().GetComponentInParent<CanvasGroup>();
-            yield return new WaitUntil(() => typewritter.alpha == 0);
+            yield return new WaitUntil(Is.TypewritterHidden);
+            yield return null;
+        }
+
+        public static IEnumerator TheDayToStart()
+        {
+            ClickOn<SpeakerButton>();
+            yield return new WaitForSeconds(1f);
+        }
+
+        public static IEnumerator TheDayToEnd()
+        {
+            Object.FindObjectOfType<EntryPoint>().EndDayAtOnce();
+            yield return new WaitForSeconds(1);
+            ClickOn<SpeakerButton>();
             yield return null;
         }
     }

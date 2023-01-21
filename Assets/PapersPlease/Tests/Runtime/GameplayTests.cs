@@ -1,7 +1,9 @@
+using System.Collections;
 using System.Threading.Tasks;
 using FluentAssertions;
 using NUnit.Framework;
 using PapersPlease.Runtime.View;
+using UnityEngine.TestTools;
 using static PapersPlease.Tests.Runtime.Wait;
 using static RGV.TestApi.Runtime.TestApi.Fake;
 using static UnityEngine.Object;
@@ -11,22 +13,22 @@ namespace PapersPlease.Tests.Runtime
 {
     public class GameplayTests : WalkingSkeletonFixture
     {
-        [Test]
-        public async Task ShowNewspaper_WhenLoadGame()
+        [UnityTest]
+        public IEnumerator ShowNewspaper_WhenLoadGame()
         {
-            await aSecond;
+            yield return Wait.TheNewspaperToBeShown();
             FindObjectOfType<CanvasNewspaper>().isActiveAndEnabled.Should().BeTrue();
         }
 
         [Test]
         public async Task OpenExpensesReport_WhenDayEnds()
         {
-            await WalkToWorkAsync();
-            await aSecond;
-            await aSecond;
-            await aSecond;
-            await aSecond;
-            
+            // await WalkToWorkAsync();
+            // await aSecond;
+            // await aSecond;
+            // await aSecond;
+            // await aSecond;
+            //
 
             ClickOn<SpeakerButton>();
             await aSecondOdd;
@@ -40,6 +42,16 @@ namespace PapersPlease.Tests.Runtime
             await aSecondOdd;
             
 
+            FindObjectOfType<EndDayScreen>(true).isActiveAndEnabled.Should().BeTrue();
+        }
+
+        [UnityTest]
+        public IEnumerator OpenExpensesReport_WhenDayEnds_Unity()
+        {
+            yield return Wait.WalkToWork();
+            yield return Wait.TheDayToStart();
+            yield return Wait.TheDayToEnd();
+            
             FindObjectOfType<EndDayScreen>(true).isActiveAndEnabled.Should().BeTrue();
         }
     }
