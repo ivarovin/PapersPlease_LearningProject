@@ -1,5 +1,4 @@
 using System;
-using System.Threading;
 using System.Threading.Tasks;
 using PapersPlease.Runtime.Model;
 
@@ -23,13 +22,12 @@ namespace PapersPlease.Runtime.Controller
             this.workdayModel = workdayModel;
         }
 
-        public async Task Run(TimeSpan realtimeWorkday, CancellationToken token)
+        public async Task Run(TimeSpan realtimeWorkday)
         {
             while(true)
             {
-                token.ThrowIfCancellationRequested();
                 await showNewspaper.Run();
-                await startDay.Run(token);
+                await startDay.Run();
 
                 do { await callNext.Run(realtimeWorkday); }
                 while(!workdayModel.IsOver);

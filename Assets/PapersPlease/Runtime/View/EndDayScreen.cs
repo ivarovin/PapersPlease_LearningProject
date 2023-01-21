@@ -7,9 +7,10 @@ namespace PapersPlease.Runtime.View
 {
     public class EndDayScreen : MonoBehaviour, ExpensesReport
     {
-        async Task ExpensesReport.OfDay(int day, EconomicBalance balance)
+        Task ExpensesReport.OfDay(int day, EconomicBalance balance)
         {
             gameObject.SetActive(true);
+            return Task.CompletedTask;
         }
     }
 }

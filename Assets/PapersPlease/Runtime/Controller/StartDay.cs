@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using PapersPlease.Runtime.Model;
 
 namespace PapersPlease.Runtime.Controller
@@ -15,9 +14,8 @@ namespace PapersPlease.Runtime.Controller
             this.view = view;
         }
 
-        public Task Run(CancellationToken token)
+        public Task Run()
         {
-            token.ThrowIfCancellationRequested();
             return view.StartAt(model);
         }
     }
