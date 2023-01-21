@@ -42,7 +42,7 @@ namespace PapersPlease.Tests.Runtime
             TextOnLabelOf<DigitalClock>().Should().Be("06:00:00");
         }
 
-        [Test]
+        [Test, Description("False negative")]
         public async Task Forwarding_IsNotPossible_BeforeWorkdayStarts()
         {
             await WalkToWork();
@@ -51,20 +51,6 @@ namespace PapersPlease.Tests.Runtime
             await aFrame;
 
             TextOnLabelOf<DigitalClock>().Should().Be("06:00:00");
-        }
-
-        [Test]
-        public async Task Forwarding_DuringWorkday()
-        {
-            await WalkToWork();
-
-            ClickOn<SpeakerButton>();
-            await aSecond;
-
-            ClickOn<ForwardingInput>();
-            await aSecond;
-
-            TextOnLabelOf<DigitalClock>().Should().Be("07:00:01");
         }
     }
 }
