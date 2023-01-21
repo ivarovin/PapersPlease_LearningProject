@@ -12,11 +12,12 @@ namespace PapersPlease.Tests.Runtime
     public abstract class WalkingSkeletonFixture
     {
         TimeSpan originalRealtimeWorkday;
-        
+        const float speedUp = 7.5f;
+
         [UnitySetUp]
         public IEnumerator SetUp()
         {
-            Time.timeScale *= 10; 
+            Time.timeScale *= speedUp; 
             
             originalRealtimeWorkday = EntryPoint.RealtimeWorkday;
             EntryPoint.RealtimeWorkday = Worktime.Default.Duration;
@@ -27,7 +28,7 @@ namespace PapersPlease.Tests.Runtime
         [UnityTearDown]
         public IEnumerator TearDown()
         {
-            Time.timeScale /= 10;
+            Time.timeScale /= speedUp;
             
             EntryPoint.RealtimeWorkday = originalRealtimeWorkday;
             DOTween.KillAll(); //Si fuera Complete, las cosas destruidas darían MissingReferenceException.

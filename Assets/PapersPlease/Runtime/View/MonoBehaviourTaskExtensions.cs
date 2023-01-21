@@ -14,7 +14,16 @@ namespace PapersPlease.Runtime.View
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Task Delay(this MonoBehaviour monoBehaviour, TimeSpan delay)
         {
-            return Task.Delay(delay, monoBehaviour.destroyCancellationToken);
+            return Task.Delay(delay / Time.timeScale, monoBehaviour.destroyCancellationToken);
+        }
+        
+        /// <summary>
+        /// Same than <see cref="Delay"/> but unscaled time. 
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Task DelayRealTime(this MonoBehaviour monoBehaviour, TimeSpan unscaledDelay)
+        {
+            return Task.Delay(unscaledDelay, monoBehaviour.destroyCancellationToken);
         }
     }
 }
