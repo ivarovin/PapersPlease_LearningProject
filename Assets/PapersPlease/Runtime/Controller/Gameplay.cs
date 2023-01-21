@@ -28,7 +28,7 @@ namespace PapersPlease.Runtime.Controller
             while(true)
             {
                 token.ThrowIfCancellationRequested();
-                await showNewspaper.Run(token);
+                await showNewspaper.Run();
                 await startDay.Run(token);
 
                 do { await callNext.Run(realtimeWorkday); }

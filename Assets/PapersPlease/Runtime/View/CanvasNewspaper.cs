@@ -1,5 +1,4 @@
 using System;
-using System.Threading;
 using System.Threading.Tasks;
 using DG.Tweening;
 using PapersPlease.Runtime.Controller;
@@ -13,15 +12,12 @@ namespace PapersPlease.Runtime.View
     {
         [SerializeField] TextMeshProUGUI date;
 
-        public async Task Open(DateTime dateTime, CancellationToken token)
+        public async Task Open(DateTime dateTime)
         {
-            token.ThrowIfCancellationRequested();
             date.text = $"{dateTime:dd/MM/yyyy}";
-
             GetComponentInParent<CanvasGroup>().DOFade(1, .2f);
-            transform.DOLocalRotate(Vector3.back * 360 * 9, .9f, RotateMode.LocalAxisAdd).SetEase(OutQuad);
 
-            token.ThrowIfCancellationRequested();
+            transform.DOLocalRotate(Vector3.back * 360 * 9, .9f, RotateMode.LocalAxisAdd).SetEase(OutQuad);
             await transform.DOScale(0, .9f).From().SetEase(InQuad).AsyncWaitForCompletion();
         }
 
