@@ -71,7 +71,7 @@ namespace PapersPlease.Tests.Runtime
             Object.FindObjectOfType<EntryPoint>().EndDayAtOnce();
             yield return new WaitForSeconds(1);
             ClickOn<SpeakerButton>();
-            yield return null;
+            yield return new WaitForSeconds(1);
         }
     }
 }

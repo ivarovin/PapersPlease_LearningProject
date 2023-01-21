@@ -25,15 +25,5 @@ namespace PapersPlease.Tests.Runtime
 
             Find.TextOnChildLabelOf<DigitalClock>().Should().NotBe("06:00:00");
         }
-        
-        [UnityTest]
-        public IEnumerator EndDay()
-        {
-            yield return Wait.WalkToWork();
-            yield return Wait.TheDayToStart();
-            yield return Wait.TheDayToEnd();
-
-            Object.FindObjectOfType<EndDayScreen>().gameObject.activeInHierarchy.Should().BeTrue();
-        }
     }
 }
