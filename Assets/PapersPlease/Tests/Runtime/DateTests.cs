@@ -1,8 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections;
+using System.Threading.Tasks;
 using FluentAssertions;
 using FluentAssertions.Extensions;
 using NUnit.Framework;
 using PapersPlease.Runtime.View;
+using UnityEngine.TestTools;
 using static PapersPlease.Tests.Runtime.Wait;
 using static RGV.TestApi.Runtime.TestApi.Fake;
 using static RGV.TestApi.Runtime.TestApi.Find;
@@ -12,10 +14,10 @@ namespace PapersPlease.Tests.Runtime
 {
     public class DateTests : WalkingSkeletonFixture
     {
-        [Test]
-        public async Task GoToWork_ShowsTheDay()
+        [UnityTest]
+        public IEnumerator GoToWork_ShowsTheDay()
         {
-            await WalkToWorkAsync();
+            yield return WalkToWork();
 
             TextOnChildLabelOf<Typewriter>().Should().Be($"{23.November(1982):dd MM yyyy}");
         }

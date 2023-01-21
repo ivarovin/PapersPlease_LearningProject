@@ -1,7 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections;
+using System.Threading.Tasks;
 using FluentAssertions;
 using NUnit.Framework;
 using PapersPlease.Runtime.View;
+using UnityEngine;
+using UnityEngine.TestTools;
 using static PapersPlease.Tests.Runtime.Wait;
 using static RGV.TestApi.Runtime.TestApi.Fake;
 using static RGV.TestApi.Runtime.TestApi.Find;
@@ -18,14 +21,12 @@ namespace PapersPlease.Tests.Runtime
             await aSecond;
         }
 
-        [Test]
-        public async Task WorkingDayStartsWithFirstEntrant()
+        [UnityTest]
+        public IEnumerator WorkingDayStartsWithFirstEntrant()
         {
-            await WalkToWork();
+            yield return Wait.WalkToWork();
             ClickOn<SpeakerButton>();
-
-            await aSecond;
-            await aSecond;
+            yield return new WaitForSeconds(2);
 
             TextOnLabelOf<DigitalClock>().Should().Be("06:00:01");
         }

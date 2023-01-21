@@ -65,6 +65,7 @@ namespace PapersPlease.Tests.Runtime
         {
             var typewritter = UnityEngine.Object.FindObjectOfType<Typewriter>().GetComponentInParent<CanvasGroup>();
             yield return new WaitUntil(() => typewritter.alpha == 0);
+            yield return null;
         }
     }
 }
