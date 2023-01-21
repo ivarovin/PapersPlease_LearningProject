@@ -25,8 +25,7 @@ namespace PapersPlease.Tests.Runtime
         public IEnumerator TearDown()
         {
             EntryPoint.RealtimeWorkday = originalRealtimeWorkday;
-            yield return null;
-            DOTween.CompleteAll(); // ¿Kill o Complete?
+            DOTween.KillAll(); //Si fuera Complete, las cosas destruidas darían MissingReferenceException.
             yield return null;
         }
     }

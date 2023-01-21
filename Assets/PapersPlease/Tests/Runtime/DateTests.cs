@@ -15,7 +15,7 @@ namespace PapersPlease.Tests.Runtime
         [Test]
         public async Task GoToWork_ShowsTheDay()
         {
-            await WalkToWork();
+            await WalkToWorkAsync();
 
             TextOnChildLabelOf<Typewriter>().Should().Be($"{23.November(1982):dd MM yyyy}");
         }
@@ -23,7 +23,7 @@ namespace PapersPlease.Tests.Runtime
         [Test]
         public async Task FinishWorkday_ShowsDayEnded()
         {
-            await WalkToWork();
+            await WalkToWorkAsync();
 
             ClickOn<SpeakerButton>();
             await aSecondOdd;
@@ -40,7 +40,7 @@ namespace PapersPlease.Tests.Runtime
         [Test]
         public async Task EndDay_ThenStartDay_PassesToNextDay()
         {
-            await WalkToWork();
+            await WalkToWorkAsync();
 
             ClickOn<SpeakerButton>();
             await aSecondOdd;
@@ -51,7 +51,7 @@ namespace PapersPlease.Tests.Runtime
             ClickOn<SpeakerButton>();
             await aSecond;
 
-            await WalkToWork();
+            await WalkToWorkAsync();
             await aSecond;
             await aSecond;
 

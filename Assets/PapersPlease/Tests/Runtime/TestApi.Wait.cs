@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Collections;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using FluentAssertions.Extensions;
 using PapersPlease.Runtime.View;
@@ -34,12 +35,29 @@ namespace PapersPlease.Tests.Runtime
             }
         }
         
-        public static async Task WalkToWork()
+        public static async Task WalkToWorkAsync()
         {
             await aSecond;
             ClickOn<WalkToWorkButton>();
             await aSecond;
             await aSecond;
+        }
+        
+        public static IEnumerator WalkToWork()
+        {
+            yield return TheNewspaperToBeShown();
+            ClickOn<WalkToWorkButton>();
+            yield return NewDayTypewriter();
+        }
+
+        static IEnumerator TheNewspaperToBeShown()
+        {
+            yield return new WaitForSeconds(2);
+        }
+
+        static IEnumerator NewDayTypewriter()
+        {
+            yield return new WaitForSeconds(2);
         }
     }
 }
