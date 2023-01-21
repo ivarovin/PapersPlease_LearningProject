@@ -1,9 +1,7 @@
-using System.Collections;
 using System.Threading.Tasks;
 using FluentAssertions;
 using NUnit.Framework;
 using PapersPlease.Runtime.View;
-using UnityEngine.TestTools;
 using static PapersPlease.Tests.Runtime.Wait;
 using static RGV.TestApi.Runtime.TestApi.Fake;
 using static UnityEngine.Object;
@@ -43,12 +41,6 @@ namespace PapersPlease.Tests.Runtime
             
 
             FindObjectOfType<EndDayScreen>(true).isActiveAndEnabled.Should().BeTrue();
-        }
-
-        [UnityTest]
-        public IEnumerator WalkToWorkTest()
-        {
-            yield return WalkToWork();
         }
     }
 }

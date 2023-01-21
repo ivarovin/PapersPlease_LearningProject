@@ -18,7 +18,7 @@ namespace PapersPlease.Runtime.Controller
         public Task Run(CancellationToken token)
         {
             token.ThrowIfCancellationRequested();
-            return view.StartAt(model, token);
+            return view.StartAt(model);
         }
     }
 }
