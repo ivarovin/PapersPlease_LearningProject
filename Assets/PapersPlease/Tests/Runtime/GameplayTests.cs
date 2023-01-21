@@ -1,5 +1,6 @@
 using System.Collections;
 using FluentAssertions;
+using NUnit.Framework;
 using PapersPlease.Runtime.View;
 using UnityEngine.TestTools;
 using static UnityEngine.Object;
@@ -16,13 +17,10 @@ namespace PapersPlease.Tests.Runtime
             FindObjectOfType<CanvasNewspaper>().isActiveAndEnabled.Should().BeTrue();
         }
 
-        [UnityTest]
+        [UnityTest, Repeat(100)]
         public IEnumerator OpenExpensesReport_WhenDayEnds()
         {
-            yield return Wait.WalkToWork();
-            yield return Wait.TheDayToStart();
-            yield return Wait.TheDayToEnd();
-            
+            yield return Simulate.WholeDay();
             FindObjectOfType<EndDayScreen>(true).gameObject.activeInHierarchy.Should().BeTrue();
         }
     }

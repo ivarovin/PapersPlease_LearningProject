@@ -13,7 +13,7 @@ namespace PapersPlease.Tests.Runtime
         [UnityTest]
         public IEnumerator WorkingDayStartsWithFirstEntrant()
         {
-            yield return Wait.WalkToWork();
+            yield return Simulate.WalkToWork();
             ClickOn<SpeakerButton>();
             yield return new WaitForSeconds(2);
 
@@ -23,7 +23,7 @@ namespace PapersPlease.Tests.Runtime
         [UnityTest]
         public IEnumerator WorkingDay_StartsAtSixAM()
         {
-            yield return Wait.WalkToWork();
+            yield return Simulate.WalkToWork();
             TextOnLabelOf<DigitalClock>().Should().Be("06:00:00");
         }
     }

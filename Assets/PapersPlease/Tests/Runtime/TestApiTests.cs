@@ -11,15 +11,15 @@ namespace PapersPlease.Tests.Runtime
         [UnityTest]
         public IEnumerator WalkToWorkTest()
         {
-            yield return Wait.WalkToWork();
+            yield return Simulate.WalkToWork();
             Is.TypewritterHidden().Should().BeTrue();
         }
 
         [UnityTest]
         public IEnumerator StartDay()
         {
-            yield return Wait.WalkToWork();
-            yield return Wait.TheDayToStart();
+            yield return Simulate.WalkToWork();
+            yield return Wait.TheWorkdayToStart();
 
             yield return new WaitForSeconds(1);
 

@@ -36,14 +36,6 @@ namespace PapersPlease.Tests.Runtime
             await aSecond;
         }
 
-        public static IEnumerator WalkToWork()
-        {
-            yield return TheNewspaperToBeShown();
-            ClickOn<WalkToWorkButton>();
-            yield return TheNewspaperToBeClosed();
-            yield return NewDayTypewriter();
-        }
-
         public static IEnumerator TheNewspaperToBeShown()
         {
             yield return new WaitForSeconds(2);
@@ -60,13 +52,13 @@ namespace PapersPlease.Tests.Runtime
             yield return null;
         }
 
-        public static IEnumerator TheDayToStart()
+        public static IEnumerator TheWorkdayToStart()
         {
             ClickOn<SpeakerButton>();
             yield return new WaitForSeconds(1f);
         }
 
-        public static IEnumerator TheDayToEnd()
+        public static IEnumerator TheWorkdayToEnd()
         {
             Object.FindObjectOfType<EntryPoint>().EndDayAtOnce();
             yield return new WaitForSeconds(1);
