@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using PapersPlease.Runtime.Controller;
 using UnityEngine;
 using Zenject;
@@ -12,9 +13,15 @@ namespace PapersPlease.Runtime.View
         [Inject] TimePassage time;
         [Inject] Gameplay gameplay;
 
-        async void Start()
+        void Start()
         {
-            await gameplay.Run(RealtimeWorkday);
+            SafeAwaitOf(gameplay.Run(RealtimeWorkday, destroyCancellationToken));
+        }
+
+        static async void SafeAwaitOf(Task task)
+        {
+            try { await task; }
+            catch (OperationCanceledException) { }
         }
         
         void Update()

@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Threading.Tasks;
 using PapersPlease.Runtime.Model;
 
@@ -16,9 +17,10 @@ namespace PapersPlease.Runtime.Controller
             this.day = day;
         }
 
-        public async Task Run()
+        public async Task Run(CancellationToken token)
         {
-            await newspaper.Open(day);
+            token.ThrowIfCancellationRequested();
+            await newspaper.Open(day, token);
             await walkToWork.Listen();
             await newspaper.Close();
         }

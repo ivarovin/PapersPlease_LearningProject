@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using DG.Tweening;
 using Febucci.UI;
@@ -9,25 +10,26 @@ namespace PapersPlease.Runtime.View
 {
     public class Typewriter : MonoBehaviour, NewDay
     {
-        public async Task StartAt(DateTime day)
+        public async Task StartAt(DateTime day, CancellationToken token)
         {
             GetComponentInParent<CanvasGroup>().alpha = 1;
-            await Task.Delay(TimeSpan.FromSeconds(.5f));
+            await Task.Delay(TimeSpan.FromSeconds(.5f), token);
             
-            await WriteCharByChar(day);
-            await Task.Delay(TimeSpan.FromSeconds(.5f));
+            await WriteCharByChar(day, token);
+            token.ThrowIfCancellationRequested();
+            await Task.Delay(TimeSpan.FromSeconds(.5f), token);
 
             await GetComponentInParent<CanvasGroup>().DOFade(0, .5f).AsyncWaitForCompletion();
         }
 
-        Task WriteCharByChar(DateTime day)
+        Task WriteCharByChar(DateTime day, CancellationToken token)
         {
             var text = $"{day:dd MM yyyy}";
             GetComponent<TextAnimator>().SetText(text, true);
             GetComponent<TextAnimatorPlayer>().StartShowingText();
             
             var animTime = GetComponent<TextAnimatorPlayer>().TypingTimeOf(text);
-            return Task.Delay(animTime);
+            return Task.Delay(animTime, token);
         }
     }
 }
