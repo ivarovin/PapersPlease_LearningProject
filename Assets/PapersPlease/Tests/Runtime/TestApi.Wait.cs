@@ -47,6 +47,7 @@ namespace PapersPlease.Tests.Runtime
         {
             yield return TheNewspaperToBeShown();
             ClickOn<WalkToWorkButton>();
+            yield return TheNewspaperToBeClosed();
             yield return NewDayTypewriter();
         }
 
@@ -54,10 +55,16 @@ namespace PapersPlease.Tests.Runtime
         {
             yield return new WaitForSeconds(2);
         }
+        
+        static IEnumerator TheNewspaperToBeClosed()
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
 
         static IEnumerator NewDayTypewriter()
         {
-            yield return new WaitForSeconds(2);
+            var typewritter = UnityEngine.Object.FindObjectOfType<Typewriter>().GetComponentInParent<CanvasGroup>();
+            yield return new WaitUntil(() => typewritter.alpha == 0);
         }
     }
 }
