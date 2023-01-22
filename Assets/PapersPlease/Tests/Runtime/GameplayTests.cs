@@ -1,8 +1,6 @@
 using System.Collections;
 using FluentAssertions;
-using NUnit.Framework;
 using PapersPlease.Runtime.View;
-using RGV.TestApi.Runtime;
 using UnityEngine.TestTools;
 using static UnityEngine.Object;
 
@@ -25,11 +23,11 @@ namespace PapersPlease.Tests.Runtime
             FindObjectOfType<EndDayScreen>(true).gameObject.activeInHierarchy.Should().BeTrue();
         }
 
-        [UnityTest, Ignore("Not implemented yet")]
+        [UnityTest]
         public IEnumerator CloseExpensesReport_WhenNewDayStarts()
         {
             yield return Simulate.WholeDay();
-            TestApi.Fake.ClickOn<CloseEndDayScreenButton>();
+            yield return Simulate.PassToNextDay();
             FindObjectOfType<EndDayScreen>(false).gameObject.activeInHierarchy.Should().BeTrue();
         }
 

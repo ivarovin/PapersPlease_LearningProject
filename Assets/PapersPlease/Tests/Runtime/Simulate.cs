@@ -25,5 +25,11 @@ namespace PapersPlease.Tests.Runtime
             yield return Wait.TheNewspaperToBeClosed();
             yield return Wait.NewDayTypewriter();
         }
+
+        public static IEnumerator PassToNextDay()
+        {
+            TestApi.Fake.ClickOn<StartNewDayButton>();
+            yield return null;
+        }
     }
 }

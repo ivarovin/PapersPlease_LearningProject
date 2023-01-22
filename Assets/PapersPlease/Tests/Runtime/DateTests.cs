@@ -29,6 +29,7 @@ namespace PapersPlease.Tests.Runtime
         public IEnumerator EndDay_ThenStartDay_PassesToNextDay()
         {
             yield return Simulate.WholeDay();
+            yield return Simulate.PassToNextDay();
             yield return Simulate.WalkToWork();
 
             Find.TextOnChildLabelOf<Typewriter>().Should().Be($"{24.November(1982):dd MM yyyy}");
