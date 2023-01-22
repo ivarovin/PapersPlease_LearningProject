@@ -7,5 +7,6 @@ namespace PapersPlease.Runtime.Controller
     {
         Task OfDay(int day, EconomicBalance balance);
         Task Listen();
+        Task Close();
     }
 }

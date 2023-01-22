@@ -29,6 +29,7 @@ namespace PapersPlease.Runtime.Controller
 
             await view.OfDay(model.DaysSinceBeginning, balance);
             await view.Listen();
+            await view.Close();
             
             model.SpendDay();
         }

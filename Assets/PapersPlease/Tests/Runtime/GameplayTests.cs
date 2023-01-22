@@ -41,7 +41,7 @@ namespace PapersPlease.Tests.Runtime
         {
             yield return Simulate.WholeDay();
             yield return Simulate.PassToNextDay();
-            FindObjectOfType<EndDayScreen>(false).gameObject.activeInHierarchy.Should().BeTrue();
+            Is.ExpensesReportVisible().Should().BeFalse();
         }
 
         [UnityTest]

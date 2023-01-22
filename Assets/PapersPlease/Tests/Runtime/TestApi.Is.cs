@@ -18,5 +18,11 @@ namespace PapersPlease.Tests.Runtime
                 .GetComponentInParent<CanvasGroup>()
                 .alpha == 0;
         }
+
+        public static bool ExpensesReportVisible()
+        {
+            return UnityEngine.Object.FindObjectOfType<EndDayScreen>(true)
+                .gameObject.activeInHierarchy == true;
+        }
     }
 }

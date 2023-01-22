@@ -23,5 +23,11 @@ namespace PapersPlease.Runtime.View
             FindObjectOfType<StartNewDayButton>(true).GetComponent<Button>().onClick.AddListener(() => tcs.SetResult(true));
             await tcs.Task;
         }
+        
+        public Task Close()
+        {
+            gameObject.SetActive(false);
+            return Task.CompletedTask;
+        }
     }
 }
