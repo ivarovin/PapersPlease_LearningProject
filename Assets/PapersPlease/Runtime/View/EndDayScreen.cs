@@ -1,7 +1,9 @@
 ﻿using System.Threading.Tasks;
 using PapersPlease.Runtime.Controller;
 using PapersPlease.Runtime.Model;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace PapersPlease.Runtime.View
 {
@@ -10,7 +12,15 @@ namespace PapersPlease.Runtime.View
         Task ExpensesReport.OfDay(int day, EconomicBalance balance)
         {
             gameObject.SetActive(true);
+            FindObjectOfType<EndDayLabel>().GetComponent<TextMeshProUGUI>().text = $"End of day {day}";
             return Task.CompletedTask;
+        }
+
+        public async Task Listen()
+        {
+            var tcs = new TaskCompletionSource<bool>();
+            FindObjectOfType<StartNewDayButton>(true).GetComponent<Button>().onClick.AddListener(() => tcs.SetResult(true));
+            await tcs.Task;
         }
     }
 }

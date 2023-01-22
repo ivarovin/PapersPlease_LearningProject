@@ -18,7 +18,7 @@ namespace PapersPlease.Tests.Runtime
         }
 
         [UnityTest]
-        public IEnumerator FinishWorkday_ShowsDayEnded_Unity()
+        public IEnumerator FinishWorkday_ShowsDayEnded()
         {
             yield return Simulate.WholeDay();
 

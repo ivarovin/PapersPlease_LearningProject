@@ -11,5 +11,12 @@ namespace PapersPlease.Tests.Runtime
                 .GetComponentInParent<CanvasGroup>()
                 .alpha == 0;
         }
+
+        public static bool NewspaperHidden()
+        {
+            return UnityEngine.Object.FindObjectOfType<CanvasNewspaper>()
+                .GetComponentInParent<CanvasGroup>()
+                .alpha == 0;
+        }
     }
 }
