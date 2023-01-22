@@ -6,6 +6,9 @@ using UnityEngine.TestTools;
 
 namespace PapersPlease.Tests.Runtime
 {
+    /// <summary>
+    /// ESTOS TESTS DEBERÍAN ACABAR EN PRODUCCIÓN DE ALGUNA MANERA.
+    /// </summary>
     public class TestApiTests : WalkingSkeletonFixture
     {
         [UnityTest]

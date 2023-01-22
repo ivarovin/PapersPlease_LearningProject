@@ -22,7 +22,7 @@ namespace PapersPlease.Tests.Runtime
         {
             yield return Simulate.WholeDay();
 
-            TextOnLabelOf<Typewriter>().Should().Be("End of day 1");
+            TextOnLabelOf<EndDayLabel>().Should().Be("End of day 1");
         }
 
         [UnityTest]
