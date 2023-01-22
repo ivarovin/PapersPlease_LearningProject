@@ -2,14 +2,19 @@
 {
     public class EconomicBalance
     {
-        public float Salary { get; init; }
-        public float Savings { get; init; }
-        public float Rent { get; init; }
-        public float Penalties { get; init; }
+        public int Salary { get; init; }
+        public int Savings { get; init; }
+        public int Rent { get; init; }
+        public int Penalties { get; init; }
+        
+        Commodities Commodities { get; init; }
+        public int Food => Commodities.Food;
+        public int Heat => Commodities.Heat;
 
-        public virtual float TotalExpenses => Rent + Penalties;
-        public float TotalIncome => Salary + Savings;
-        public float Balance => TotalIncome - TotalExpenses;
+
+        public virtual int TotalExpenses => Rent + Penalties;
+        public int TotalIncome => Salary + Savings;
+        public int Balance => TotalIncome - TotalExpenses;
         public bool IsInDebt => Balance < 0;
     }
 }
