@@ -16,7 +16,18 @@ namespace PapersPlease.Runtime.Controller
 
         public async Task Run()
         {
-            await view.OfDay(model.DaysSinceBeginning, new EconomicBalance());
+            //Crear según reglas de negocio.
+            var balance = new EconomicBalance
+            {
+                Salary = 654,
+                Savings = 6878,
+                Rent = 5,
+                Penalties = 5,
+                Food = 5,
+                Heat = 5
+            };
+
+            await view.OfDay(model.DaysSinceBeginning, balance);
             await view.Listen();
             
             model.SpendDay();

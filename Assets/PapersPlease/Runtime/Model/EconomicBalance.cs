@@ -6,10 +6,18 @@
         public int Savings { get; init; }
         public int Rent { get; init; }
         public int Penalties { get; init; }
-        
-        Commodities Commodities { get; init; }
-        public int Food => Commodities.Food;
-        public int Heat => Commodities.Heat;
+
+        Commodities Commodities { get; } = new Commodities();
+        public int Food
+        {
+            get => Commodities.Food;
+            init => Commodities.Food = value;
+        }
+        public int Heat
+        {
+            get => Commodities.Heat;
+            init => Commodities.Heat = value;
+        }
 
 
         public virtual int TotalExpenses => Rent + Penalties;

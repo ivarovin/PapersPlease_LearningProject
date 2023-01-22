@@ -13,6 +13,7 @@ namespace PapersPlease.Runtime.View
         {
             gameObject.SetActive(true);
             FindObjectOfType<EndDayLabel>().GetComponent<TextMeshProUGUI>().text = $"End of day {day}";
+            FindObjectOfType<Billing>().Print(balance);
             return Task.CompletedTask;
         }
 

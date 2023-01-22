@@ -1,8 +1,8 @@
 ﻿namespace PapersPlease.Runtime.Model
 {
-    public class Commodities
+    internal class Commodities
     {
-        public int Heat { get; init; }
-        public int Food { get; init; }
+        public int Heat { get; set; }
+        public int Food { get; set; }
     }
 }
