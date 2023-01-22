@@ -1,17 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Threading.Tasks;
 using FluentAssertions.Extensions;
 using PapersPlease.Runtime.View;
 using TMPro;
 using UnityEngine;
 using static RGV.TestApi.Runtime.TestApi.Fake;
+using Object = UnityEngine.Object;
 
 namespace PapersPlease.Tests.Runtime
 {
     public static class Wait
     {
+        [Obsolete("Tiene que desaparecer.")]
         public static Task aSecond => Task.Delay(1000.Milliseconds());
-        public static Task aSecondOdd => Task.Delay(1100.Milliseconds());
 
         public static async Task ToChange(this TextMeshProUGUI label)
         {

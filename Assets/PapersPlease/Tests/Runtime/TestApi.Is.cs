@@ -18,6 +18,8 @@ namespace PapersPlease.Tests.Runtime
                 .GetComponentInParent<CanvasGroup>()
                 .alpha == 0;
         }
+        
+        public static bool NewspaperVisible() => !NewspaperHidden();
 
         public static bool ExpensesReportVisible()
         {
