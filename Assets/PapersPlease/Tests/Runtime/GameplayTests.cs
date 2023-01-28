@@ -41,6 +41,31 @@ namespace PapersPlease.Tests.Runtime
         }
 
         [UnityTest]
+        public IEnumerator ApplyChoicesToExpenses()
+        {
+            yield return Simulate.WholeDay();
+
+            var previousBalance = Find.EconomicMagnitudeValueOf("Balance");
+
+            Fake.Toggle("Heat");
+
+            Find.EconomicMagnitudeValueOf("Balance").Should().NotBeEquivalentTo(previousBalance);
+        }
+
+        [UnityTest]
+        public IEnumerator ResetChoices_WhenOpenExpensesReport()
+        {
+            yield return Simulate.WholeDay();
+            
+            Fake.Toggle("Heat");
+
+            yield return Simulate.PassToNextDay();
+            yield return Simulate.WholeDay();
+            
+            Find.ToggleOf("Heat").isOn.Should().BeFalse();
+        }
+
+        [UnityTest]
         public IEnumerator CloseExpensesReport_WhenNewDayStarts()
         {
             yield return Simulate.WholeDay();

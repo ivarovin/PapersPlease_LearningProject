@@ -12,8 +12,7 @@ namespace PapersPlease.Runtime.View
             
             transform.Find("Rent").GetComponent<EconomicMagnitude>().Print(balance.Rent);
             transform.Find("Penalties").GetComponent<EconomicMagnitude>().Print(balance.Penalties);
-            
-            
+
             transform.Find("Food").GetComponent<EconomicMagnitude>().Print(balance.Food);
             transform.Find("Heat").GetComponent<EconomicMagnitude>().Print(balance.Heat);
             
