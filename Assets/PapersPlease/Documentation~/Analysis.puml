@@ -22,7 +22,7 @@ control EndDay
 
 boundary "Passport" as PassportView
 boundary "Immigrant" as ImmigrantView
-boundary "Penalty" as PenaltyView
+boundary "MOA Citation" as PenaltyView
 boundary "Salary" as SalaryView
 boundary "DailyReport" as DailyReportView
 boundary DailyRules

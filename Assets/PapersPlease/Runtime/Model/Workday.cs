@@ -5,6 +5,7 @@ namespace PapersPlease.Runtime.Model
     public class Workday
     {
         readonly Worktime schedule = Worktime.Default;
+
         TimeSpan realtimeDuration;
         DateTime date;
         bool isPassing;

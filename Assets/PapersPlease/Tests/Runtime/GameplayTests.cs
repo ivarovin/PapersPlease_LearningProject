@@ -1,5 +1,7 @@
 using System.Collections;
 using FluentAssertions;
+using PapersPlease.Runtime.View;
+using RGV.TestApi.Runtime;
 using UnityEngine.TestTools;
 
 namespace PapersPlease.Tests.Runtime
@@ -50,6 +52,18 @@ namespace PapersPlease.Tests.Runtime
             Fake.Toggle("Heat");
 
             Find.EconomicMagnitudeValueOf("Balance").Should().NotBeEquivalentTo(previousBalance);
+        }
+
+        [UnityTest]
+        public IEnumerator Salary_CannotBe0_WhenHits()
+        {
+            yield return Simulate.WalkToWork();
+            
+            TestApi.Fake.ClickOn<HitButton>();
+
+            yield return Simulate.WholeWorkday();
+
+            Find.EconomicMagnitudeValueOf("Salary").Should().NotBeEquivalentTo("0");
         }
 
         [UnityTest]

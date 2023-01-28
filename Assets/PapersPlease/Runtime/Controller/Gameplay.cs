@@ -9,11 +9,13 @@ namespace PapersPlease.Runtime.Controller
         readonly ShowNewspaper showNewspaper;
         readonly StartDay startDay;
         readonly CallForNextEntrant callNext;
+        readonly InspectPassport inspectPassport;
         readonly EndDay endDay;
 
         readonly Workday workdayModel;
 
-        public Gameplay(ShowNewspaper showNewspaper, StartDay startDay, CallForNextEntrant callNext, EndDay endDay, Workday workdayModel)
+        public Gameplay(ShowNewspaper showNewspaper, StartDay startDay, CallForNextEntrant callNext, EndDay endDay,
+            Workday workdayModel)
         {
             this.showNewspaper = showNewspaper;
             this.startDay = startDay;
@@ -29,8 +31,11 @@ namespace PapersPlease.Runtime.Controller
                 await showNewspaper.Run();
                 await startDay.Run();
 
-                do { await callNext.Run(realtimeWorkday); }
-                while(!workdayModel.IsOver);
+                do
+                {
+                    await callNext.Run(realtimeWorkday);
+                    await inspectPassport.Run();
+                } while(!workdayModel.IsOver);
 
                 await endDay.Run();
             }
