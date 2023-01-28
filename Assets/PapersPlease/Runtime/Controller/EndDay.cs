@@ -16,16 +16,9 @@ namespace PapersPlease.Runtime.Controller
 
         public async Task Run()
         {
-            //Crear según reglas de negocio.
-            var balance = new EconomicBalance
-            {
-                Salary = 654,
-                Savings = 6878,
-                Rent = 5,
-                Penalties = 5,
-                Food = 5,
-                Heat = 5
-            };
+            //TODO: sacar los cálculos del performance según el día real.
+            //TODO: la economía tendrá que compartirse entre diferentes controladores, es modelo.
+            var balance = new Economy().BalanceForDay(WorkdayPerformance.Zero);
 
             await view.OfDay(model.DaysSinceBeginning, balance);
             await view.Listen();
