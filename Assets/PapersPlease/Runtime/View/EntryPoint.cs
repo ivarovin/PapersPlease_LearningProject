@@ -31,8 +31,7 @@ namespace PapersPlease.Runtime.View
             if(Input.GetKeyDown(KeyCode.Space))
                 EndDayAtOnce();
         }
-
-        /// QA. Refactor. 
+        
         public void EndDayAtOnce()
         {
             time.Inject(RealtimeWorkday);
