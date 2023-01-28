@@ -18,7 +18,7 @@ namespace PapersPlease.Tests.Editor
             var mock = Substitute.For<ExpensesReport>();
             mock.OfDay(default, default).ReturnsForAnyArgs(Task.CompletedTask);
 
-            var sut = new EndDay(dummy, mock);
+            var sut = new EndDay(new Economy(), dummy, mock);
 
             await sut.Run();
             mock.ClearReceivedCalls();

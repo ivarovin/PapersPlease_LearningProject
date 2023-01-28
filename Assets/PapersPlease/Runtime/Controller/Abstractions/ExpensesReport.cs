@@ -5,8 +5,7 @@ namespace PapersPlease.Runtime.Controller
 {
     public interface ExpensesReport
     {
-        Task OfDay(int day, EconomicBalance balance);
-        Task Listen();
+        Task<Bills> OfDay(int day, EconomicBalance balance);
         Task Close();
     }
 }

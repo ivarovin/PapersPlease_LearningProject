@@ -16,6 +16,7 @@ namespace PapersPlease.Runtime.View
         void InstallModels()
         {
             Container.BindInterfacesAndSelfTo<Workday>().FromInstance(Workday.FirstOne).AsSingle();
+            Container.BindInterfacesAndSelfTo<Economy>().AsSingle();
         }
         
         void InstallControllers()

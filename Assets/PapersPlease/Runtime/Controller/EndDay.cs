@@ -5,26 +5,27 @@ namespace PapersPlease.Runtime.Controller
 {
     public class EndDay
     {
-        readonly Workday model;
+        readonly Economy economy;
+        readonly Workday workday;
         readonly ExpensesReport view;
-
-        public EndDay(Workday model, ExpensesReport view)
+        
+        public EndDay(Economy economy, Workday workday, ExpensesReport view)
         {
-            this.model = model;
+            this.economy = economy;
+            this.workday = workday;
             this.view = view;
         }
 
         public async Task Run()
         {
             //TODO: sacar los cálculos del performance según el día real.
-            //TODO: la economía tendrá que compartirse entre diferentes controladores, es modelo.
-            var balance = new Economy().BalanceForDay(WorkdayPerformance.Zero);
+            var balance = economy.BalanceForDay(WorkdayPerformance.Zero);
 
-            await view.OfDay(model.DaysSinceBeginning, balance);
-            await view.Listen();
+            var bills = await view.OfDay(workday.DaysSinceBeginning, balance);
+            economy.Apply(bills);
             await view.Close();
             
-            model.SpendDay();
+            workday.SpendDay();
         }
     }
 }

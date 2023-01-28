@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using PapersPlease.Runtime.View;
 using TMPro;
 using UnityEngine;
@@ -14,7 +15,15 @@ namespace PapersPlease.Tests.Runtime
                 .text;
         }
         
-        public static IEnumerable<EconomicMagnitude> EconomicValues()
+        public static string EconomicMagnitudeValueOf(string name)
+        {
+            return EconomicMagnitudes()
+                .Single(m => m.name == name)
+                .transform.Find("Value")
+                .GetComponent<TMP_Text>().text;
+        }
+        
+        public static IEnumerable<EconomicMagnitude> EconomicMagnitudes()
         {
             return Object.FindObjectsOfType<EconomicMagnitude>();
         }

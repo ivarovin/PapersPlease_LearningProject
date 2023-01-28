@@ -24,7 +24,20 @@ namespace PapersPlease.Tests.Runtime
         public IEnumerator OpenExpensesReport_ShowsEconomicBalance()
         {
             yield return Simulate.WholeDay();
-            Find.EconomicValues().Should().OnlyContain(e => e.Value != -1);
+            Find.EconomicMagnitudes().Should().OnlyContain(e => e.Value != -1);
+        }
+
+        [UnityTest]
+        public IEnumerator SavingsChanges_asDaysPass()
+        {
+            yield return Simulate.WholeDay();
+            
+            var previousSavings = Find.EconomicMagnitudeValueOf("Savings");
+
+            yield return Simulate.PassToNextDay();
+            yield return Simulate.WholeDay();
+
+            Find.EconomicMagnitudeValueOf("Savings").Should().NotBeEquivalentTo(previousSavings);
         }
 
         [UnityTest]
