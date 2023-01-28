@@ -7,19 +7,20 @@ namespace PapersPlease.Runtime.Controller
     {
         readonly Economy economy;
         readonly Workday workday;
+        readonly WorkdayPerformance performance;
         readonly ExpensesReport view;
         
-        public EndDay(Economy economy, Workday workday, ExpensesReport view)
+        public EndDay(Economy economy, Workday workday, WorkdayPerformance performance, ExpensesReport view)
         {
             this.economy = economy;
             this.workday = workday;
+            this.performance = performance;
             this.view = view;
         }
 
         public async Task Run()
         {
-            //TODO: sacar los cálculos del performance según el día real.
-            var balance = economy.BalanceForDay(WorkdayPerformance.Zero);
+            var balance = economy.BalanceForDay(performance);
 
             var bills = await view.OfDay(workday.DaysSinceBeginning, balance);
             economy.Apply(bills);

@@ -65,6 +65,18 @@ namespace PapersPlease.Tests.Runtime
 
             Find.EconomicMagnitudeValueOf("Salary").Should().NotBeEquivalentTo("0");
         }
+        
+        [UnityTest]
+        public IEnumerator Penalties_CannotBe0_WhenFails()
+        {
+            yield return Simulate.WalkToWork();
+            
+            TestApi.Fake.ClickOn<FaultButton>();
+
+            yield return Simulate.WholeWorkday();
+
+            Find.EconomicMagnitudeValueOf("Penalties").Should().NotBeEquivalentTo("0");
+        }
 
         [UnityTest]
         public IEnumerator ResetChoices_WhenOpenExpensesReport()

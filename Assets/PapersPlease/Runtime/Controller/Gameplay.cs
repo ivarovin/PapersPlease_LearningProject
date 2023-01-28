@@ -15,13 +15,14 @@ namespace PapersPlease.Runtime.Controller
         readonly Workday workdayModel;
 
         public Gameplay(ShowNewspaper showNewspaper, StartDay startDay, CallForNextEntrant callNext, EndDay endDay,
-            Workday workdayModel)
+                        Workday workdayModel, InspectPassport inspectPassport)
         {
             this.showNewspaper = showNewspaper;
             this.startDay = startDay;
             this.callNext = callNext;
             this.endDay = endDay;
             this.workdayModel = workdayModel;
+            this.inspectPassport = inspectPassport;
         }
 
         public async Task Run(TimeSpan realtimeWorkday)

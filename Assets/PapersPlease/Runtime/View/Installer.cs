@@ -17,6 +17,7 @@ namespace PapersPlease.Runtime.View
         {
             Container.BindInterfacesAndSelfTo<Workday>().FromInstance(Workday.FirstOne).AsSingle();
             Container.BindInterfacesAndSelfTo<Economy>().AsSingle();
+            Container.Bind<WorkdayPerformance>().AsSingle();
         }
         
         void InstallControllers()
@@ -27,6 +28,7 @@ namespace PapersPlease.Runtime.View
             Container.Bind<TimePassage>().AsSingle();
             Container.Bind<ShowNewspaper>().AsSingle();
             Container.Bind<Gameplay>().AsSingle();
+            Container.Bind<InspectPassport>().AsSingle();
         }
 
         void InstallViews()
